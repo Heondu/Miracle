@@ -1,0 +1,177 @@
+fileFormatVersion: 2
+guid: cbdd429cb8905d74fb1c9b41d680ed75
+ModelImporter:
+  serializedVersion: 20200
+  internalIDToNameTable:
+  - first:
+      74: -6135184973256917163
+    second: Root|Root|ArmWave_End|Base Layer
+  - first:
+      74: 608261772562243442
+    second: Root|Root|ArmWave_Loop|Base Layer
+  - first:
+      74: 4043177296862295508
+    second: Root|Root|ArmWave_Start|Base Layer
+  - first:
+      74: 4398290176553041791
+    second: Root|Root|CH_Fallguy_FG_emote_HappyClap|Base Layer
+  - first:
+      74: -2193908607922749175
+    second: Root|Root|CH_Fallguy_FG_Emote_Mexwave|Base Layer
+  - first:
+      74: 5562146422764846144
+    second: Root|Root|FG_Beefcake_A|Base Layer
+  - first:
+      74: -5923466050370452948
+    second: Root|Root|FG_CostumeChangeLooking_A|Base Layer
+  - first:
+      74: -129131854597218775
+    second: Root|Root|FG_Emote_Armthrow_A|Base Layer
+  - first:
+      74: 2913469360978397841
+    second: Root|Root|FG_Emote_Chicken_A|Base Layer
+  - first:
+      74: 5708671929493448923
+    second: Root|Root|FG_Emote_Neener_A|Base Layer
+  - first:
+      74: 5460230128601564955
+    second: Root|Root|FG_Emote_Pattycake_A|Base Layer
+  - first:
+      74: -3846471933789683596
+    second: Root|Root|FG_Emote_PirateDance_A|Base Layer
+  - first:
+      74: -1321990305582151567
+    second: Root|Root|FG_Emote_RobotDance_A|Base Layer
+  - first:
+      74: -1591964159171138234
+    second: Root|Root|FG_Emote_slowclap_A|Base Layer
+  - first:
+      74: -9103721987637870038
+    second: Root|Root|FG_Emote_ThumbsUp_A|Base Layer
+  - first:
+      74: 94004327335702338
+    second: Root|Root|FG_Emote_Wave_A|Base Layer
+  - first:
+      74: 7765047362146079786
+    second: Root|Root|FG_Emote_WaveOverHead_A|Base Layer
+  - first:
+      74: 6125005768225858960
+    second: Root|Root|FG_Emote_Zsnap_A|Base Layer
+  - first:
+      74: -973273196082963871
+    second: Root|Root|FG_Idle_A|Base Layer
+  - first:
+      74: -4862107265568172639
+    second: Root|Root|FG_Idle_Joggingonspot|Base Layer
+  - first:
+      74: 401448258099218071
+    second: Root|Root|FG_Idle_TouchingToes|Base Layer
+  - first:
+      74: -683338835829274405
+    second: Root|Root|FG_Loading_Falling_A|Base Layer
+  - first:
+      74: 3615506826218446034
+    second: Root|Root|FG_Walk_A|Base Layer
+  - first:
+      74: -471552441677148699
+    second: Root|Root|FG_Walk_Left_A|Base Layer
+  - first:
+      74: -4227650040070532267
+    second: Root|Root|FG_Walk_Right_A|Base Layer
+  externalObjects: {}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
