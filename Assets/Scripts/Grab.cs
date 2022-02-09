@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class Grab : MonoBehaviour
 {
+    [SerializeField] private string[] ignoreTag;
+    [SerializeField] private PlayerWeapon playerWeapon;
+
     private bool isGrabbing = false;
     private new Rigidbody rigidbody;
     private GameObject grabbableObj;
@@ -16,11 +19,30 @@ public class Grab : MonoBehaviour
     {
         if (isGrabbing == false && grabbableObj != null)
         {
-            fixedJoint = grabbableObj.AddComponent<FixedJoint>();
-            fixedJoint.connectedBody = rigidbody;
-            fixedJoint.breakForce = 9001;
-            isGrabbing = true;
+            if (CheckWeapon())
+                return;
+
+            GrabObject();
         }
+    }
+
+    private bool CheckWeapon()
+    {
+        Weapon weapon = grabbableObj.GetComponentInParent<Weapon>();
+        if (weapon != null)
+        {
+            playerWeapon.PickupWeapon(weapon);
+            return true;
+        }
+        return false;
+    }
+
+    private void GrabObject()
+    {
+        fixedJoint = grabbableObj.AddComponent<FixedJoint>();
+        fixedJoint.connectedBody = rigidbody;
+        fixedJoint.breakForce = 9001;
+        isGrabbing = true;
     }
 
     public void Deactivate()
@@ -32,6 +54,14 @@ public class Grab : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        for (int i = 0; i < ignoreTag.Length; i++)
+        {
+            if (other.CompareTag(ignoreTag[i]))
+                return;
+        }
+        if (other.transform.root == transform.root)
+            return;
+
         grabbableObj = other.gameObject;
     }
 

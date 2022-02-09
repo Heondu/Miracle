@@ -25,6 +25,7 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         UpdateRotate();
+        UpdateJump();
         UpdateGrab();
         UpdateAnim();
     }
@@ -32,7 +33,6 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         UpdateMove();
-        UpdateJump();
     }
 
     private void UpdateRotate()
