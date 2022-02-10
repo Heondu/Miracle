@@ -1,7 +1,9 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public class PlayerController : MonoBehaviour
+using Photon.Pun;
+
+public class PlayerController : MonoBehaviourPunCallbacks, IPunObservable
 {
     [SerializeField] private float speed;
     [SerializeField] private float jumpForce;
@@ -17,6 +19,24 @@ public class PlayerController : MonoBehaviour
 
     private PlayerInput playerInput;
 
+    #region IPunObservable implementation
+
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if(stream.IsWriting)
+        {
+            stream.SendNext(grabL);
+            stream.SendNext(grabR);
+        }
+        else
+        {
+            this.grabL=(Grab)stream.ReceiveNext();
+            this.grabR=(Grab)stream.ReceiveNext();
+        }
+    }
+
+    #endregion
+
     private void Awake()
     {
         playerInput = GetComponent<PlayerInput>();
@@ -24,6 +44,11 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        if(photonView.IsMine == false && PhotonNetwork.IsConnected == true)
+        {
+            return;
+        }
+
         UpdateRotate();
         UpdateJump();
         UpdateGrab();

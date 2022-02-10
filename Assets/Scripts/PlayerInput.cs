@@ -1,6 +1,8 @@
 using UnityEngine;
 
-public class PlayerInput : MonoBehaviour
+using Photon.Pun;
+
+public class PlayerInput : MonoBehaviourPun
 {
     public Vector3 Move { get; private set; }
     public bool Jump { get; private set; }
@@ -10,10 +12,13 @@ public class PlayerInput : MonoBehaviour
 
     private void Update()
     {
-        UpdateAxis();
-        UpdateJump();
-        UpdateGrab();
-        UpdateHandsUp();
+        if(photonView.IsMine)
+        {
+            UpdateAxis();
+            UpdateJump();
+            UpdateGrab();
+            UpdateHandsUp();
+        }
     }
 
     private void UpdateAxis()
