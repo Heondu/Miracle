@@ -1,4 +1,5 @@
 using UnityEngine;
+using ExitGames.Client.Photon;
 using Photon.Pun;
 
 public class Entity : MonoBehaviourPunCallbacks, IPunObservable
@@ -15,15 +16,63 @@ public class Entity : MonoBehaviourPunCallbacks, IPunObservable
 
     #region IPunObservable implementation
 
+    private static short statusSz = sizeof(float)*1;
+    public static readonly byte[] memStatus = new byte[statusSz];
+    private static short SerializeStatus(StreamBuffer outstream, object customobject)
+    {
+        Status st = (Status)customobject;
+        lock(memStatus)
+        {
+            byte[] bytes = memStatus;
+            int index = 0;
+            Protocol.Serialize(st.CurrentHP, bytes, ref index);
+
+            outstream.Write(bytes, 0, statusSz);
+        }
+        
+
+        return statusSz;
+    }
+
+    private static object DeserializeStatus(StreamBuffer inStream, short length)
+    {
+        /*
+        Status st = null;
+        lock(memStatus)
+        {
+            inStream.Read(memStatus, 0, statusSz);
+            int index = 0;
+            int hp;
+            Protocol.Deserialize(out hp, memStatus, ref index);
+            st.CurrentHP = hp;
+        }
+
+        return st;
+        */
+
+        float CurrentHP;
+        lock (memStatus)
+        {
+            inStream.Read(memStatus, 0, statusSz);
+            int index = 0;
+            Protocol.Deserialize(out CurrentHP, memStatus, ref index);
+        }
+
+        return CurrentHP;
+    }
+
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
         if(stream.IsWriting)
         {
-            //stream.SendNext(status);
+            stream.SendNext(status);//직렬화 해놓기
+            Debug.Log("Send" + this.status.CurrentHP);
         }
         else
         {
-            //this.status=(Status)stream.ReceiveNext();
+            //this.status=(Status)stream.ReceiveNext();//참고
+            this.status.CurrentHP = (float)stream.ReceiveNext();//임시
+            Debug.Log(this.status.CurrentHP);
         }
     }
 
@@ -34,6 +83,8 @@ public class Entity : MonoBehaviourPunCallbacks, IPunObservable
     {
         status = GetComponent<Status>();
         status.onModifierUpdate.AddListener(hpViewer.UpdateHP);
+
+        PhotonPeer.RegisterType(typeof(Status), 1, SerializeStatus, DeserializeStatus);
 
         if(photonView.IsMine)
         {
