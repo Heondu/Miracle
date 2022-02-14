@@ -25,13 +25,13 @@ public class PlayerController : MonoBehaviourPunCallbacks, IPunObservable
     {
         if(stream.IsWriting)
         {
-            stream.SendNext(grabL);
-            stream.SendNext(grabR);
+            stream.SendNext(root.position);
+            stream.SendNext(root.rotation);
         }
         else
         {
-            this.grabL=(Grab)stream.ReceiveNext();
-            this.grabR=(Grab)stream.ReceiveNext();
+            this.root.position=(Vector3)stream.ReceiveNext();
+            this.root.rotation=(Quaternion)stream.ReceiveNext();
         }
     }
 
