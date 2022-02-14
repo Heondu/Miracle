@@ -1,13 +1,16 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class MakeTransparent : MonoBehaviour
 {
-    [SerializeField] private Transform target;
-
+    private Transform target;
     private List<Transparent> current = new List<Transparent>();
     private List<Transparent> already = new List<Transparent>();
+
+    public void Setup(Transform target)
+    {
+        this.target = target;
+    }
 
     private void Update()
     {

@@ -5943,6 +5943,10 @@ PrefabInstance:
       propertyPath: m_ConnectedAnchor.z
       value: 0.49999952
       objectReference: {fileID: 0}
+    - target: {fileID: 5751417037021869045, guid: 83a47049a4517354e8f56c97df9489c6, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 83a47049a4517354e8f56c97df9489c6, type: 3}
 --- !u!43 &1191368258
@@ -7306,7 +7310,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 482a2a13b0012084e81bb11ae71a67a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 469332343}
 --- !u!20 &1687258584
 Camera:
   m_ObjectHideFlags: 0
@@ -7357,7 +7360,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1687258581}
-  m_LocalRotation: {x: 0.33100694, y: -0.000000016236429, z: 0.0000000056954317, w: 0.9436283}
+  m_LocalRotation: {x: 0.33100694, y: 0.000000016236429, z: -0.0000000056954317, w: 0.9436283}
   m_LocalPosition: {x: 0, y: 8, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -8548,7 +8551,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2083496326}
-  m_LocalRotation: {x: 0.33100694, y: -0.000000016236429, z: 0.0000000056954317, w: 0.9436283}
+  m_LocalRotation: {x: 0.33100694, y: 0.000000016236429, z: -0.0000000056954317, w: 0.9436283}
   m_LocalPosition: {x: 0, y: 8, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:

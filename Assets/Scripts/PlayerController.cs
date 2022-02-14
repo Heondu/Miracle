@@ -19,6 +19,9 @@ public class PlayerController : MonoBehaviourPunCallbacks, IPunObservable
 
     private PlayerInput playerInput;
 
+    private Vector3 nextPosition;
+    private Quaternion nextRotation;
+
     #region IPunObservable implementation
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
@@ -30,8 +33,8 @@ public class PlayerController : MonoBehaviourPunCallbacks, IPunObservable
         }
         else
         {
-            this.root.position=(Vector3)stream.ReceiveNext();
-            this.root.rotation=(Quaternion)stream.ReceiveNext();
+            nextPosition = (Vector3)stream.ReceiveNext();
+            nextRotation = (Quaternion)stream.ReceiveNext();
         }
     }
 
@@ -44,20 +47,29 @@ public class PlayerController : MonoBehaviourPunCallbacks, IPunObservable
 
     private void Update()
     {
-        if(photonView.IsMine == false && PhotonNetwork.IsConnected == true)
-        {
+        if (!PhotonNetwork.IsConnected)
             return;
-        }
 
-        UpdateRotate();
-        UpdateJump();
-        UpdateGrab();
-        UpdateAnim();
+        if (photonView.IsMine)
+        {
+            UpdateRotate();
+            UpdateJump();
+            UpdateGrab();
+            UpdateAnim();
+        }
+        else
+        {
+            InterpPosition();
+            InterpRotation();
+        }
     }
 
     private void FixedUpdate()
     {
-        UpdateMove();
+        if (photonView.IsMine)
+        {
+            UpdateMove();
+        }
     }
 
     private void UpdateRotate()
@@ -115,5 +127,15 @@ public class PlayerController : MonoBehaviourPunCallbacks, IPunObservable
             grabR.Activate();
         else
             grabR.Deactivate();
+    }
+
+    private void InterpPosition()
+    {
+        transform.position = Vector3.Slerp(transform.position, nextPosition, Time.deltaTime * 2);
+    }
+
+    private void InterpRotation()
+    {
+        transform.rotation = Quaternion.Slerp(transform.rotation, nextRotation, Time.deltaTime * 2);
     }
 }

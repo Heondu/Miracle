@@ -65,14 +65,12 @@ public class Entity : MonoBehaviourPunCallbacks, IPunObservable
     {
         if(stream.IsWriting)
         {
-            stream.SendNext(status);//직렬화 해놓기
-            Debug.Log("Send" + this.status.CurrentHP);
+            stream.SendNext(status.CurrentHP);//직렬화 해놓기
         }
         else
         {
             //this.status=(Status)stream.ReceiveNext();//참고
-            this.status.CurrentHP = (float)stream.ReceiveNext();//임시
-            Debug.Log(this.status.CurrentHP);
+            status.CurrentHP = (float)stream.ReceiveNext();//임시
         }
     }
 
@@ -122,6 +120,12 @@ public class Entity : MonoBehaviourPunCallbacks, IPunObservable
     }
 
     public void TakeDamage(float damage)
+    {
+        photonView.RPC("OnDamage", RpcTarget.All, damage);
+    }
+
+    [PunRPC]
+    public void OnDamage(float damage)
     {
         if (status.CurrentHP == 0)
         {
