@@ -19,11 +19,11 @@ public class Entity : MonoBehaviourPunCallbacks, IPunObservable
     {
         if(stream.IsWriting)
         {
-            stream.SendNext(status);
+            //stream.SendNext(status);
         }
         else
         {
-            this.status=(Status)stream.ReceiveNext();
+            //this.status=(Status)stream.ReceiveNext();
         }
     }
 
