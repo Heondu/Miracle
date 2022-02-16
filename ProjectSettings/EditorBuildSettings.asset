@@ -26,4 +26,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: d1c3109bdb54ad54c8a2b2838528e640
+  - enabled: 1
+    path: Assets/Scenes/Result Basic.unity
+    guid: a5b8e3b5af5fe914eb555578f331b365
+  - enabled: 1
+    path: Assets/Scenes/Result DeathMatch.unity
+    guid: 12aa8cfed871bcb428347beb9cf08699
   m_configObjects: {}
