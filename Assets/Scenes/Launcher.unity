@@ -362,15 +362,12 @@ MonoBehaviour:
   m_CharacterLimit: 0
   m_OnEndEdit:
     m_PersistentCalls:
-      m_Calls: []
-  m_OnValueChanged:
-    m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 768865999}
         m_TargetAssemblyTypeName: OnionBagel.PcGame.Miracle.PlayerNameInputField,
           Assembly-CSharp
         m_MethodName: SetPlayerName
-        m_Mode: 5
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -379,6 +376,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  m_OnValueChanged:
+    m_PersistentCalls:
+      m_Calls: []
   m_CaretColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_CustomCaretColor: 0
   m_SelectionColor: {r: 0.65882355, g: 0.80784315, b: 1, a: 0.7529412}
@@ -911,7 +911,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2147131123}
         m_TargetAssemblyTypeName: OnionBagel.PcGame.Miracle.Launcher, Assembly-CSharp
-        m_MethodName: Connect
+        m_MethodName: Play
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1150,7 +1150,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10b5fc8fc1c409f4eaff9e3773342d1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxPlayersPerRoom: 4
   controlPanel: {fileID: 1028682880}
   progressLabel: {fileID: 2079770611}
 --- !u!4 &2147131124

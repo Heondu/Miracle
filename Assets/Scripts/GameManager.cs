@@ -3,7 +3,7 @@ using System.Collections;
 
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using UnityEngine.UI;
 using Photon.Pun;
 using Photon.Realtime;
 
@@ -15,37 +15,56 @@ namespace OnionBagel.PcGame.Miracle
 
         public GameObject playerPrefab;
 
+        public Text msgList;
+        public InputField ifSendMsg;
+        public Text playerCount;
+
         #endregion
 
         #region Photon Callbacks
 
         public override void OnLeftRoom()
         {
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene(1);
         }
 
         public override void OnPlayerEnteredRoom(Player other)
         {
-            Debug.LogFormat("OnPlayerEnteredRoom() {0}", other.NickName);
-
-            if(PhotonNetwork.IsMasterClient)
+            if(PhotonNetwork.IsMasterClient)//생각 해보기
             {
                 Debug.LogFormat("OnPlayerEnteredRoom IsMasterClient {0}", PhotonNetwork.IsMasterClient);
 
                 LoadArena();
             }
+
+            Debug.LogFormat("OnPlayerEnteredRoom() {0}", other.NickName);
+            CheckPlayerCount();
+
+            string msg = string.Format("\n<color=#00ff00>[{0}]님이 입장했습니다.</color>", other.NickName);
+
+            photonView.RPC("ReceiveMsg", RpcTarget.Others, msg);
+
+            ReceiveMsg(msg);
         }
 
         public override void OnPlayerLeftRoom(Player other)
         {
-            Debug.LogFormat("OnPlayerLeftRoom() {0}", other.NickName);
-
             if(PhotonNetwork.IsMasterClient)
             {
                 Debug.LogFormat("OnPlayerLeftRoom IsMasterClient {0}", PhotonNetwork.IsMasterClient);
 
                 LoadArena();
             }
+
+            Debug.LogFormat("OnPlayerLeftRoom() {0}", other.NickName);
+
+            CheckPlayerCount();
+
+            string msg = string.Format("\n<color=#ff0000>[{0}]님이 퇴장했습니다.</color>", other.NickName);
+
+            photonView.RPC("ReceiveMsg", RpcTarget.Others, msg);
+
+            ReceiveMsg(msg);
         }
 
         #endregion
@@ -57,6 +76,22 @@ namespace OnionBagel.PcGame.Miracle
         #endregion
 
         #region Public Methods
+
+        public void OnSendChatMsg()
+        {
+            string msg = string.Format("[{0}] {1}", PhotonNetwork.LocalPlayer.NickName, ifSendMsg.text);
+            photonView.RPC("ReceiveMsg", RpcTarget.OthersBuffered, msg);
+            ReceiveMsg(msg);
+
+            ifSendMsg.text = "";
+            //ifSendMsg.ActivateInputField();
+        }
+
+        [PunRPC]
+        void ReceiveMsg(string msg)
+        {
+            msgList.text += "\n" + msg;
+        }
 
         public void LeaveRoom()
         {
@@ -87,6 +122,16 @@ namespace OnionBagel.PcGame.Miracle
                     Debug.LogFormat("Ignoring scene load for {0}", SceneManagerHelper.ActiveSceneName);
                 }
             }
+
+            PhotonNetwork.IsMessageQueueRunning = true;
+            Invoke("CheckPlayerCount", 0.5f);
+        }
+
+        void CheckPlayerCount()
+        {
+            int currPlayer = PhotonNetwork.PlayerList.Length;
+            int maxPlayer = PhotonNetwork.CurrentRoom.MaxPlayers;
+            playerCount.text = String.Format("[{0} / {1}]", currPlayer, maxPlayer);
         }
         
         void LoadArena()//방 입장
