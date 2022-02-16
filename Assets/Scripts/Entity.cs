@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 using ExitGames.Client.Photon;
 using Photon.Pun;
 
@@ -6,7 +7,10 @@ public class Entity : MonoBehaviourPunCallbacks, IPunObservable
 {
     private Status status;
     public Status Status => status;
+    
     [SerializeField] private HPViewer hpViewer;
+
+    public UnityEvent<Entity> onDeath = new UnityEvent<Entity>();
 
     #region
 
@@ -89,39 +93,46 @@ public class Entity : MonoBehaviourPunCallbacks, IPunObservable
             Entity.LocalPlayerInstance = this.gameObject;
         }
 
-        DontDestroyOnLoad(this.gameObject);
+        //DontDestroyOnLoad(this.gameObject);
     }
 
     private void Start()
     {
-        #if UNITY_5_4_OR_NEWER
-        UnityEngine.SceneManagement.SceneManager.sceneLoaded += (scene, loadingMode) =>
-        {
-            this.CalledOnLevelWasLoaded(scene.buildIndex);
-        };
-        #endif
+        //#if UNITY_5_4_OR_NEWER
+        //UnityEngine.SceneManagement.SceneManager.sceneLoaded += (scene, loadingMode) =>
+        //{
+        //    this.CalledOnLevelWasLoaded(scene.buildIndex);
+        //};
+        //#endif
     }
 
-    #if !UNITY_5_4_OR_NEWER
-    void OnLevelWasLoaded(int level)
-    {
-        this.CalledOnLevelWasLoaded(level);
-    }
-    #endif
-    
-    
-    void CalledOnLevelWasLoaded(int level)
-    {
-        // check if we are outside the Arena and if it's the case, spawn around the center of the arena in a safe zone
-        if (!Physics.Raycast(transform.position, -Vector3.up, 5f))
-        {
-            transform.position = new Vector3(0f, 5f, 0f);
-        }
-    }
+    //#if !UNITY_5_4_OR_NEWER
+    //void OnLevelWasLoaded(int level)
+    //{
+    //    this.CalledOnLevelWasLoaded(level);
+    //}
+    //#endif
+    //
+    //
+    //void CalledOnLevelWasLoaded(int level)
+    //{
+    //    // check if we are outside the Arena and if it's the case, spawn around the center of the arena in a safe zone
+    //    if (!Physics.Raycast(transform.position, -Vector3.up, 5f))
+    //    {
+    //        transform.position = new Vector3(0f, 5f, 0f);
+    //    }
+    //}
 
     public void TakeDamage(float damage)
     {
-        photonView.RPC("OnDamage", RpcTarget.All, damage);
+        if (PhotonNetwork.IsConnected)
+        {
+            photonView.RPC("OnDamage", RpcTarget.All, damage);
+        }
+        else
+        {
+            OnDamage(damage);
+        }
     }
 
     [PunRPC]
@@ -129,7 +140,9 @@ public class Entity : MonoBehaviourPunCallbacks, IPunObservable
     {
         if (status.CurrentHP == 0)
         {
-            OnionBagel.PcGame.Miracle.GameManager.Instance.LeaveRoom();//namespace해야함...
+            onDeath.Invoke(this);
+
+            //OnionBagel.PcGame.Miracle.GameManager.Instance.LeaveRoom();//namespace해야함...
         }
 
         status.CurrentHP -= (int)damage;

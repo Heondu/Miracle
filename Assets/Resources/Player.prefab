@@ -2090,6 +2090,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hpViewer: {fileID: 5587646380599665529}
+  onDeath:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!95 &5276432754946400759
 Animator:
   serializedVersion: 3

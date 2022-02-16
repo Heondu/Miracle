@@ -14,6 +14,7 @@ namespace OnionBagel.PcGame.Miracle
         #region Public Variables region
 
         public GameObject playerPrefab;
+        public EGameMode GameMode;
 
         #endregion
 
@@ -32,7 +33,7 @@ namespace OnionBagel.PcGame.Miracle
             {
                 Debug.LogFormat("OnPlayerEnteredRoom IsMasterClient {0}", PhotonNetwork.IsMasterClient);
 
-                LoadArena();
+                //LoadArena();
             }
         }
 
@@ -44,7 +45,7 @@ namespace OnionBagel.PcGame.Miracle
             {
                 Debug.LogFormat("OnPlayerLeftRoom IsMasterClient {0}", PhotonNetwork.IsMasterClient);
 
-                LoadArena();
+                //LoadArena();
             }
         }
 
@@ -79,8 +80,10 @@ namespace OnionBagel.PcGame.Miracle
             {
                 if(Entity.LocalPlayerInstance == null)
                 {
-                    Debug.LogFormat("We are Instantiating LocalPlayer from {0}", Application.loadedLevelName);
-                    PhotonNetwork.Instantiate(this.playerPrefab.name, new Vector3(0f, 5f, 0f), Quaternion.identity, 0);
+                    Debug.LogFormat("We are Instantiating LocalPlayer from {0}", SceneManager.GetActiveScene().name);
+                    GameObject player = PhotonNetwork.Instantiate(playerPrefab.name, new Vector3(0f, 5f, 0f), Quaternion.identity, 0);
+                    CheckGameMode(player.GetComponent<Entity>());
+                    UIManager.Instance.CheckGameMode(GameMode);
                 }
                 else
                 {
@@ -98,6 +101,23 @@ namespace OnionBagel.PcGame.Miracle
             Debug.LogFormat("PhotonNetwork : Loading Level : {0}", PhotonNetwork.CurrentRoom.PlayerCount);
             //PhotonNetwork.LoadLevel("Room for" + PhotonNetwork.CurrentRoom.PlayerCount);
             PhotonNetwork.LoadLevel("Room for 1");
+        }
+
+        void CheckGameMode(Entity player)
+        {
+            GameMode[] gameModes = GetComponentsInChildren<GameMode>();
+            foreach (GameMode gm in gameModes)
+            {
+                if (gm.gameMode == GameMode)
+                {
+                    gm.Init(player);
+                }
+                else
+                {
+                    gm.gameObject.SetActive(false);
+                }
+
+            }
         }
         
         #endregion

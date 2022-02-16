@@ -22,13 +22,13 @@ namespace OnionBagel.PcGame.Miracle
         void Start()
         {
             string defaultName = string.Empty;
-            InputField _inputField = this.GetComponent<InputField>();
-            if(_inputField!=null)
+            InputField inputField = GetComponent<InputField>();
+            if (inputField != null)
             {
-                if(PlayerPrefs.HasKey(playerNamePrefKey))
+                if (PlayerPrefs.HasKey(playerNamePrefKey))
                 {
                     defaultName = PlayerPrefs.GetString(playerNamePrefKey);
-                    _inputField.text = defaultName;
+                    inputField.text = defaultName;
                 }
             }
 
@@ -46,6 +46,7 @@ namespace OnionBagel.PcGame.Miracle
                 Debug.LogError("Player Name is null or empty");
                 return;
             }
+
             PhotonNetwork.NickName = value;
 
             PlayerPrefs.SetString(playerNamePrefKey, value);

@@ -47,9 +47,6 @@ public class PlayerController : MonoBehaviourPunCallbacks, IPunObservable
 
     private void Update()
     {
-        if (!PhotonNetwork.IsConnected)
-            return;
-
         if (photonView.IsMine)
         {
             UpdateRotate();
