@@ -1,6 +1,4 @@
 using UnityEngine;
-using UnityEngine.Events;
-
 using Photon.Pun;
 
 public class PlayerController : MonoBehaviourPunCallbacks, IPunObservable
@@ -26,16 +24,16 @@ public class PlayerController : MonoBehaviourPunCallbacks, IPunObservable
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
-        if(stream.IsWriting)
-        {
-            stream.SendNext(root.position);
-            stream.SendNext(root.rotation);
-        }
-        else
-        {
-            nextPosition = (Vector3)stream.ReceiveNext();
-            nextRotation = (Quaternion)stream.ReceiveNext();
-        }
+        //if(stream.IsWriting)
+        //{
+        //    stream.SendNext(root.position);
+        //    stream.SendNext(root.rotation);
+        //}
+        //else
+        //{
+        //    root.position = (Vector3)stream.ReceiveNext();
+        //    root.rotation = (Quaternion)stream.ReceiveNext();
+        //}
     }
 
     #endregion
@@ -47,9 +45,6 @@ public class PlayerController : MonoBehaviourPunCallbacks, IPunObservable
 
     private void Update()
     {
-        if (!PhotonNetwork.IsConnected)
-            return;
-
         if (photonView.IsMine)
         {
             UpdateRotate();
@@ -59,8 +54,8 @@ public class PlayerController : MonoBehaviourPunCallbacks, IPunObservable
         }
         else
         {
-            InterpPosition();
-            InterpRotation();
+            //InterpPosition();
+            //InterpRotation();
         }
     }
 
@@ -75,31 +70,37 @@ public class PlayerController : MonoBehaviourPunCallbacks, IPunObservable
     private void UpdateRotate()
     {
         if (playerInput.Move != Vector3.zero)
-            Rotate();
+            Rotate(playerInput.Move);
+            //photonView.RPC(nameof(Rotate), RpcTarget.All, playerInput.Move);
     }
 
-    private void Rotate()
+    [PunRPC]
+    private void Rotate(Vector3 direction)
     {
-        root.forward = Vector3.Slerp(root.forward, playerInput.Move, Time.deltaTime * rotationSpeed);
+        root.forward = Vector3.Slerp(root.forward, direction, Time.deltaTime * rotationSpeed);
     }
 
     private void UpdateMove()
     {
         if (playerInput.Move != Vector3.zero)
-            Move();
+            Move(playerInput.Move.normalized);
+            //photonView.RPC(nameof(Move), RpcTarget.All, playerInput.Move.normalized);
     }
 
-    private void Move()
+    [PunRPC]
+    private void Move(Vector3 direction)
     {
-        pelvis.AddForce(pelvis.position + playerInput.Move.normalized * speed);
+        pelvis.AddForce(pelvis.position + direction * speed);
     }
 
     private void UpdateJump()
     {
         if (playerInput.Jump && isGrounded)
             Jump();
+            //photonView.RPC(nameof(Jump), RpcTarget.All);
     }
 
+    [PunRPC]
     private void Jump()
     {
         pelvis.AddForce(new Vector3(0, jumpForce, 0));
@@ -131,11 +132,11 @@ public class PlayerController : MonoBehaviourPunCallbacks, IPunObservable
 
     private void InterpPosition()
     {
-        transform.position = Vector3.Slerp(transform.position, nextPosition, Time.deltaTime * 2);
+        root.position = Vector3.Slerp(root.position, nextPosition, Time.deltaTime * 2);
     }
 
     private void InterpRotation()
     {
-        transform.rotation = Quaternion.Slerp(transform.rotation, nextRotation, Time.deltaTime * 2);
+        root.rotation = Quaternion.Slerp(root.rotation, nextRotation, Time.deltaTime * 2);
     }
 }
