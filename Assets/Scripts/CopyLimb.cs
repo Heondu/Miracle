@@ -9,7 +9,7 @@ public class CopyLimb : MonoBehaviourPun, IPunObservable
     private Quaternion targetInitialRotation;
 
     #region IPunObservable implementation
-
+    
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
         if (stream.IsWriting)
@@ -21,7 +21,7 @@ public class CopyLimb : MonoBehaviourPun, IPunObservable
             configurableJoint.targetRotation = (Quaternion)stream.ReceiveNext();
         }
     }
-
+    
     #endregion
 
     private void Awake()
@@ -39,11 +39,11 @@ public class CopyLimb : MonoBehaviourPun, IPunObservable
         if (!photonView.IsMine)
             return;
 
-        configurableJoint.targetRotation = CopyRotation();
+        CopyRotation();
     }
 
-    private Quaternion CopyRotation()
+    private void CopyRotation()
     {
-        return Quaternion.Inverse(targetLimb.localRotation) * targetInitialRotation;
+        configurableJoint.targetRotation = Quaternion.Inverse(targetLimb.localRotation) * targetInitialRotation;
     }
 }

@@ -1,5 +1,8 @@
+using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using Photon.Pun;
+using Photon.Realtime;
 
 public class UIManager : MonoBehaviour
 {
@@ -18,14 +21,15 @@ public class UIManager : MonoBehaviour
 
     [Header("Basic Mode")]
     [SerializeField] private TextMeshProUGUI timeText;
+    [SerializeField] private TextMeshProUGUI scoreText;
 
     [Header("Death Match Mode")]
     [SerializeField] private TextMeshProUGUI playerCountText;
 
     public void CheckGameMode(EGameMode gameMode)
     {
-        GameMode[] gameModes = GetComponentsInChildren<GameMode>();
-        foreach (GameMode gm in gameModes)
+        GameModeIs[] gameModes = GetComponentsInChildren<GameModeIs>();
+        foreach (GameModeIs gm in gameModes)
         {
             if (gm.gameMode == gameMode)
             {
@@ -48,5 +52,14 @@ public class UIManager : MonoBehaviour
     public void UpdatePlayerCountText(int count)
     {
         playerCountText.text = count.ToString();
+    }
+
+    public void UpdateScoreText()
+    {
+        scoreText.text = "";
+        foreach (Player p in PhotonNetwork.PlayerList)
+        {
+            scoreText.text += $"{p.GetScore()}. {p.NickName}\n";
+        }
     }
 }

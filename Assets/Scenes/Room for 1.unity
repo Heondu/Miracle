@@ -228,6 +228,10 @@ PrefabInstance:
       propertyPath: ObservedComponents.Array.data[0]
       value: 
       objectReference: {fileID: 102194254}
+    - target: {fileID: 6212004325375337443, guid: 0216b5a28808f534fa9659ec2691c0ba, type: 3}
+      propertyPath: limitTime
+      value: 300
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0216b5a28808f534fa9659ec2691c0ba, type: 3}
 --- !u!114 &102194254 stripped
@@ -8862,10 +8866,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8556972061283954537, guid: fbbcdeb54211646448e5afe78a17f35d, type: 3}
-      propertyPath: sceneViewId
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8681880335804311744, guid: fbbcdeb54211646448e5afe78a17f35d, type: 3}
       propertyPath: m_Name
       value: Canvas
@@ -8986,7 +8986,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2949928159394583867, guid: d59d1a87d0f35a6498754445c7b4f9ea, type: 3}
       propertyPath: GameMode
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2949928159394583867, guid: d59d1a87d0f35a6498754445c7b4f9ea, type: 3}
       propertyPath: gameMode

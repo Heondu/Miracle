@@ -25,7 +25,6 @@ public class DeathMatchMode : GameMode, IPunObservable
         base.Init(player);
 
         player.onDeath.AddListener(OnDeath);
-
     }
 
     private void OnDeath(Entity player)
@@ -47,7 +46,7 @@ public class DeathMatchMode : GameMode, IPunObservable
         {
             PlayerPrefs.SetString("Winner", PhotonNetwork.NickName);
             PhotonNetwork.LeaveRoom();
-            SceneManager.LoadScene("Result");
+            SceneManager.LoadScene("Result DeathMatch");
         }
     }
 }

@@ -1,5 +1,7 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Photon.Pun;
+using Photon.Realtime;
 
 public class BasicMode : GameMode, IPunObservable
 {
@@ -25,6 +27,12 @@ public class BasicMode : GameMode, IPunObservable
 
     #endregion
 
+    public override void Init(Entity player)
+    {
+        base.Init(player);
+        PhotonNetwork.LocalPlayer.SetScore(0);
+    }
+
     private void AddDeathCount()
     {
         deathCount++;
@@ -34,10 +42,50 @@ public class BasicMode : GameMode, IPunObservable
 
     public void Update()
     {
-        if (!PhotonNetwork.IsMasterClient)
-            return;
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+            PhotonNetwork.LocalPlayer.AddScore(1);
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+            PhotonNetwork.LocalPlayer.AddScore(-1);
 
-        elapsedTime += Time.deltaTime;
-        UIManager.Instance.UpdateTimeText(limitTime - elapsedTime);
+        UpdateScoreUI();
+
+        if (PhotonNetwork.IsMasterClient)
+        {
+            elapsedTime += Time.deltaTime;
+            UIManager.Instance.UpdateTimeText(limitTime - elapsedTime);
+        }
+
+        if (limitTime - elapsedTime <= 0)
+        {
+            photonView.RPC(nameof(LeaveRoom), RpcTarget.All);
+        }
+    }
+
+    private void UpdateScoreUI()
+    {
+        UIManager.Instance.UpdateScoreText();
+    }
+
+    [PunRPC]
+    private void LeaveRoom()
+    {
+        PlayerPrefs.SetString("Winner", GetWinner().NickName);
+        PhotonNetwork.LeaveRoom();
+        SceneManager.LoadScene("Result Basic");
+    }
+
+    private Player GetWinner()
+    {
+        Player player = null;
+        foreach (Player p in PhotonNetwork.PlayerList)
+        {
+            if (player == null)
+                player = p;
+
+            if (player.GetScore() < p.GetScore())
+                player = p;
+        }
+
+        return player;
     }
 }
