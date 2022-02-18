@@ -200,6 +200,11 @@ namespace OnionBagel.PcGame.Miracle
                 }
                 else
                 {
+                    foreach (GameObject obj in GameObject.FindGameObjectsWithTag("ROOM"))
+                    {
+                        if (roomInfo.Name == obj.GetComponent<Room>().roomName)
+                            return;
+                    }
                     GameObject _room = Instantiate(room, gridTr);
                     Room roomData = _room.GetComponent<Room>();
                     roomData.roomName = roomInfo.Name;
