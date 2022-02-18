@@ -53,8 +53,6 @@ namespace OnionBagel.PcGame.Miracle
             if(PhotonNetwork.IsMasterClient)
             {
                 Debug.LogFormat("OnPlayerLeftRoom IsMasterClient {0}", PhotonNetwork.IsMasterClient);
-
-                //LoadArena();
             }
 
             Debug.LogFormat("OnPlayerLeftRoom() {0}", other.NickName);
@@ -135,17 +133,6 @@ namespace OnionBagel.PcGame.Miracle
             int currPlayer = PhotonNetwork.PlayerList.Length;
             int maxPlayer = PhotonNetwork.CurrentRoom.MaxPlayers;
             playerCount.text = String.Format("[{0} / {1}]", currPlayer, maxPlayer);
-        }
-        
-        void LoadArena()//방 입장
-        {
-            if(!PhotonNetwork.IsMasterClient)
-            {
-                Debug.LogError("PhotonNetwork : Trying to Load a level but we are not the master Client");
-            }
-            Debug.LogFormat("PhotonNetwork : Loading Level : {0}", PhotonNetwork.CurrentRoom.PlayerCount);
-            //PhotonNetwork.LoadLevel("Room for" + PhotonNetwork.CurrentRoom.PlayerCount);
-            PhotonNetwork.LoadLevel("Room for 1");
         }
 
         void CheckGameMode(Entity player)

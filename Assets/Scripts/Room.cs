@@ -19,6 +19,6 @@ public class Room : MonoBehaviour
     
     public void UpdateInfo()
     {
-        roomDataTxt.text = string.Format(" {0} [{1} / {2}]", roomName, playerCount.ToString("00"), maxPlayer.ToString("00"));
+        roomDataTxt.text = string.Format(" {0} [{1} / {2}]", (roomName.Split('*'))[0], playerCount.ToString("00"), maxPlayer.ToString("00"));//스플릿 맞는지 확인
     }
 }
