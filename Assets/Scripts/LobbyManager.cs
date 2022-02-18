@@ -36,6 +36,7 @@ namespace OnionBagel.PcGame.Miracle
         public TMP_InputField txtPswd;
         public TMP_InputField txtPassword;
         public TMP_Dropdown dropdown;
+        public TMP_Dropdown mapDropdown;
 
         public GameObject room;
         public Transform gridTr;//필요없는거 같으면 지우기
@@ -93,15 +94,14 @@ namespace OnionBagel.PcGame.Miracle
             if (txtPswd.text != null)
             {
                 roomName += "*" + txtPswd.text;
-                ros.CustomRoomProperties = new Hashtable() { { "pwd", "1"} };
+                ros.CustomRoomProperties = new Hashtable() { { "pwd", "1"}, { "room", mapDropdown.options[mapDropdown.value].text} };
             }
             else
             {
-                ros.CustomRoomProperties = new Hashtable() { { "pwd", "0" } };
+                ros.CustomRoomProperties = new Hashtable() { { "pwd", "0" }, { "room", mapDropdown.options[mapDropdown.value].text } };
             }
             PhotonNetwork.CreateRoom(roomName, ros);
-            Debug.Log(roomName + ":" + (byte)(Mathf.Pow(2, dropdown.value)));
-            Debug.Log(roomName.Split('*')[0]);//1이 없는 방만 접속하게끔
+            Debug.Log(ros.CustomRoomProperties.Values);
         }
 
         public void OnCancelClick()
@@ -185,26 +185,36 @@ namespace OnionBagel.PcGame.Miracle
 
         public override void OnRoomListUpdate(List<RoomInfo> roomList)
         {
-            foreach(GameObject obj in GameObject.FindGameObjectsWithTag("ROOM"))//태그 지우고 자식들 전부 삭제로 할지 생각.
-            {
-                Destroy(obj);
-            }
             foreach(RoomInfo roomInfo in roomList)
             {
-                GameObject _room = Instantiate(room, gridTr);
-                Room roomData = _room.GetComponent<Room>();
-                roomData.roomName = roomInfo.Name;
-                roomData.maxPlayer = roomInfo.MaxPlayers;
-                roomData.playerCount = roomInfo.PlayerCount;
-                roomData.UpdateInfo();
-                roomData.GetComponent<Button>().onClick.AddListener
-                (
-                    delegate
+                if (roomInfo.PlayerCount <= 0)
+                {
+                    foreach (GameObject obj in GameObject.FindGameObjectsWithTag("ROOM"))
                     {
-                        OnClickRoom(roomData.roomName);
+                        if (roomInfo.Name == obj.GetComponent<Room>().roomName)
+                        {
+                            Destroy(obj);
+                            Debug.Log(obj.name);
+                        }
                     }
+                }
+                else
+                {
+                    GameObject _room = Instantiate(room, gridTr);
+                    Room roomData = _room.GetComponent<Room>();
+                    roomData.roomName = roomInfo.Name;
+                    roomData.maxPlayer = roomInfo.MaxPlayers;
+                    roomData.playerCount = roomInfo.PlayerCount;
+                    roomData.UpdateInfo();
+                    roomData.GetComponent<Button>().onClick.AddListener
+                    (
+                        delegate
+                        {
+                            OnClickRoom(roomData.roomName);
+                        }
 
-                );
+                    );
+                }
             }
         }
 
@@ -225,21 +235,24 @@ namespace OnionBagel.PcGame.Miracle
 
             ros.MaxPlayers = maxPlayersPerRoom;
             ros.IsVisible = true;
-            ros.CustomRoomProperties = new Hashtable() { { "pwd", "0" } };
+            ros.CustomRoomProperties = new Hashtable() { { "pwd", "0" }, { "room", mapDropdown.options[Random.Range(0, mapDropdown.options.Count)].text } };
 
             PhotonNetwork.CreateRoom(null, ros);
         }
 
         public override void OnJoinedRoom()
         {
+            Hashtable cp = PhotonNetwork.CurrentRoom.CustomProperties;
             Debug.Log("Launcher: OnJoinedRoom() called by PUN. Now this client is in a room.");
-
-
             //포톤네트워크의 데이터 통신을 잠시 정지 시킴.
             //플레이어 오브젝트가 생성되면 다시 연결.
             PhotonNetwork.IsMessageQueueRunning = false;
 
-            PhotonNetwork.LoadLevel("Room for 1");
+            if (!PhotonNetwork.IsMasterClient)//오류 나면 생각
+                return;
+            Debug.Log(cp["room"].ToString());
+            PhotonNetwork.LoadLevel(cp["room"].ToString());
+            Debug.Log("sk");
         }
 
         #endregion
