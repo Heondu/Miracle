@@ -57,9 +57,24 @@ public class UIManager : MonoBehaviour
     public void UpdateScoreText()
     {
         scoreText.text = "";
-        foreach (Player p in PhotonNetwork.PlayerList)
+        Player[] playerList = PhotonNetwork.PlayerList;
+        for (int i = 0; i < playerList.Length; i++)
         {
-            scoreText.text += $"{p.GetScore()}. {p.NickName}\n";
+            for (int j = 1; j < playerList.Length - i; j++)
+            {
+                if (playerList[j].GetScore() > playerList[j - 1].GetScore())
+                {
+                    Player temp = playerList[j - 1];
+                    playerList[j - 1] = playerList[j];
+                    playerList[j] = temp;
+                }
+            }
+        }
+
+        for (int i = 0; i < playerList.Length; i++)
+        {
+            scoreText.text += $"{i + 1}. {playerList[i].NickName}\n";
+            
         }
     }
 }

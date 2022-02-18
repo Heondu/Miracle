@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7409945370796422022}
   m_Layer: 0
   m_Name: Capsule
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -167,6 +167,9 @@ GameObject:
   - component: {fileID: 2408261542893315485}
   - component: {fileID: 9029819572618278780}
   - component: {fileID: 716659237285165292}
+  - component: {fileID: -6759642834521853476}
+  - component: {fileID: 1996744553428316004}
+  - component: {fileID: -2257614113586379201}
   m_Layer: 0
   m_Name: Bat
   m_TagString: Weapon
@@ -238,6 +241,58 @@ MonoBehaviour:
   - {fileID: 115038248199453468}
   - {fileID: 166780131826275803}
   attackCollision: {fileID: 8506549275181926822}
+--- !u!114 &-6759642834521853476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5267967942388014095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 2
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents:
+  - {fileID: 1996744553428316004}
+  - {fileID: -2257614113586379201}
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
+--- !u!114 &1996744553428316004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5267967942388014095}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
+--- !u!114 &-2257614113586379201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5267967942388014095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d490a5247e1007743b8991aeea988894, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7070321208530613573
 GameObject:
   m_ObjectHideFlags: 0
@@ -252,7 +307,7 @@ GameObject:
   - component: {fileID: 115038248199453468}
   m_Layer: 0
   m_Name: Sphere
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -347,7 +402,7 @@ GameObject:
   - component: {fileID: 166780131826275803}
   m_Layer: 0
   m_Name: Cylinder
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

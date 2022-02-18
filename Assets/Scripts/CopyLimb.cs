@@ -5,6 +5,7 @@ public class CopyLimb : MonoBehaviourPun, IPunObservable
 {
     [SerializeField] private Transform targetLimb;
     private ConfigurableJoint configurableJoint;
+    private new Rigidbody rigidbody;
 
     private Quaternion targetInitialRotation;
 
@@ -14,11 +15,9 @@ public class CopyLimb : MonoBehaviourPun, IPunObservable
     {
         if (stream.IsWriting)
         {
-            stream.SendNext(configurableJoint.targetRotation);
         }
         else
         {
-            configurableJoint.targetRotation = (Quaternion)stream.ReceiveNext();
         }
     }
     
@@ -27,6 +26,10 @@ public class CopyLimb : MonoBehaviourPun, IPunObservable
     private void Awake()
     {
         configurableJoint = GetComponent<ConfigurableJoint>();
+        rigidbody = GetComponent<Rigidbody>();
+
+        if (!photonView.IsMine)
+            rigidbody.isKinematic = true;
     }
 
     private void Start()

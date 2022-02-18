@@ -1,34 +1,47 @@
 using UnityEngine;
+using Photon.Pun;
 
-public class PlayerWeapon : MonoBehaviour
+public class PlayerWeapon : MonoBehaviourPun
 {
-    [SerializeField] private float scaleFactor;
+    public float scaleFactor;
+    public int id;
     private Weapon currentWeapon;
     public Weapon Weapon => currentWeapon;
+    private Grab grab;
+
+    private void Awake()
+    {
+        grab = GetComponent<Grab>();
+    }
 
     public void PickupWeapon(Weapon weapon)
     {
         if (weapon == currentWeapon)
             return;
 
-        DropWeapon();
+        if (weapon != currentWeapon)
+            ChangeWeapon();
 
-        weapon.Activate();
-
+        grab.haveWeapon = true;
         currentWeapon = weapon;
-        weapon.transform.SetParent(transform);
-        weapon.transform.localPosition = Vector3.zero;
-        weapon.transform.localRotation = Quaternion.Euler(Vector3.zero);
-        weapon.transform.localScale = Vector3.one * scaleFactor;
+        weapon.GetComponent<PhotonView>().RPC(nameof(weapon.Pick), RpcTarget.All, photonView.ViewID);
     }
 
     public void DropWeapon()
     {
         if (currentWeapon != null)
         {
-            currentWeapon.Deactivate();
-            currentWeapon.transform.SetParent(null, true);
+            currentWeapon.GetComponent<PhotonView>().RPC(nameof(currentWeapon.Drop), RpcTarget.All);
+            grab.haveWeapon = false;
             Invoke("ClearWeapon", 1);
+        }
+    }
+
+    public void ChangeWeapon()
+    {
+        if (currentWeapon != null)
+        {
+            currentWeapon.GetComponent<PhotonView>().RPC(nameof(currentWeapon.Drop), RpcTarget.All);
         }
     }
 

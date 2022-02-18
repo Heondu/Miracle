@@ -62,4 +62,14 @@ public class PlayerCombat : MonoBehaviour
                 attackCollisionR.Setup(entity, isEnabled);
         }
     }
+
+    public PlayerWeapon GetPlayerWeapon(int id)
+    {
+        if (id == 0)
+            return playerWeaponL;
+        else if (id == 1)
+            return playerWeaponR;
+
+        return null;
+    }
 }

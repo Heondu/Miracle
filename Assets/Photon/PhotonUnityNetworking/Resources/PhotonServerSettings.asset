@@ -46,6 +46,17 @@ MonoBehaviour:
   - LeaveRoom
   - Move
   - Rotate
+  - UpdateGrab
+  - GrabObject
+  - Pick
+  - Drop
+  - GrabActivate
+  - GrabDeactivate
+  - Activate
+  - Deactivate
+  - SetPosition
+  - ActivateRPC
+  - DeactivateRPC
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1

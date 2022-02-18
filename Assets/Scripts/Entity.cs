@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.Events;
-using ExitGames.Client.Photon;
 using Photon.Pun;
 
 public class Entity : MonoBehaviourPunCallbacks, IPunObservable
@@ -9,75 +8,27 @@ public class Entity : MonoBehaviourPunCallbacks, IPunObservable
     public Status Status => status;
     
     [SerializeField] private HPViewer hpViewer;
+    [SerializeField] private Transform root;
+    public Transform Root => root;
+    [SerializeField] private float dieY;
 
     public UnityEvent<Entity> onDeath = new UnityEvent<Entity>();
 
-    #region
-
     public static GameObject LocalPlayerInstance;
 
-    #endregion
-
     #region IPunObservable implementation
-
-    private static short statusSz = sizeof(float)*1;
-    public static readonly byte[] memStatus = new byte[statusSz];
-    private static short SerializeStatus(StreamBuffer outstream, object customobject)
-    {
-        Status st = (Status)customobject;
-        lock(memStatus)
-        {
-            byte[] bytes = memStatus;
-            int index = 0;
-            Protocol.Serialize(st.CurrentHP, bytes, ref index);
-
-            outstream.Write(bytes, 0, statusSz);
-        }
-        
-
-        return statusSz;
-    }
-
-    private static object DeserializeStatus(StreamBuffer inStream, short length)
-    {
-        /*
-        Status st = null;
-        lock(memStatus)
-        {
-            inStream.Read(memStatus, 0, statusSz);
-            int index = 0;
-            int hp;
-            Protocol.Deserialize(out hp, memStatus, ref index);
-            st.CurrentHP = hp;
-        }
-
-        return st;
-        */
-
-        float CurrentHP;
-        lock (memStatus)
-        {
-            inStream.Read(memStatus, 0, statusSz);
-            int index = 0;
-            Protocol.Deserialize(out CurrentHP, memStatus, ref index);
-        }
-
-        return CurrentHP;
-    }
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
         if(stream.IsWriting)
         {
-            stream.SendNext(status.CurrentHP);//직렬화 해놓기
+            stream.SendNext(status.CurrentHP);
         }
         else
         {
-            //this.status=(Status)stream.ReceiveNext();//참고
-            status.CurrentHP = (float)stream.ReceiveNext();//임시
+            status.CurrentHP = (float)stream.ReceiveNext();
         }
     }
-
 
     #endregion
 
@@ -86,42 +37,19 @@ public class Entity : MonoBehaviourPunCallbacks, IPunObservable
         status = GetComponent<Status>();
         status.onModifierUpdate.AddListener(hpViewer.UpdateHP);
 
-        PhotonPeer.RegisterType(typeof(Status), 1, SerializeStatus, DeserializeStatus);
-
-        if(photonView.IsMine)
+        if (photonView.IsMine)
         {
-            Entity.LocalPlayerInstance = this.gameObject;
+            LocalPlayerInstance = gameObject;
         }
-
-        //DontDestroyOnLoad(this.gameObject);
     }
 
-    private void Start()
+    private void Update()
     {
-        //#if UNITY_5_4_OR_NEWER
-        //UnityEngine.SceneManagement.SceneManager.sceneLoaded += (scene, loadingMode) =>
-        //{
-        //    this.CalledOnLevelWasLoaded(scene.buildIndex);
-        //};
-        //#endif
+        if (root.position.y <= dieY)
+        {
+            onDeath.Invoke(this);
+        }
     }
-
-    //#if !UNITY_5_4_OR_NEWER
-    //void OnLevelWasLoaded(int level)
-    //{
-    //    this.CalledOnLevelWasLoaded(level);
-    //}
-    //#endif
-    //
-    //
-    //void CalledOnLevelWasLoaded(int level)
-    //{
-    //    // check if we are outside the Arena and if it's the case, spawn around the center of the arena in a safe zone
-    //    if (!Physics.Raycast(transform.position, -Vector3.up, 5f))
-    //    {
-    //        transform.position = new Vector3(0f, 5f, 0f);
-    //    }
-    //}
 
     public void TakeDamage(float damage)
     {
@@ -141,10 +69,13 @@ public class Entity : MonoBehaviourPunCallbacks, IPunObservable
         if (status.CurrentHP == 0)
         {
             onDeath.Invoke(this);
-
-            //OnionBagel.PcGame.Miracle.GameManager.Instance.LeaveRoom();//namespace해야함...
         }
 
         status.CurrentHP -= (int)damage;
+    }
+
+    public void RestoreHP()
+    {
+        status.CurrentHP = status.MaxHP;
     }
 }

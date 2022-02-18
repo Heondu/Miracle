@@ -31,13 +31,14 @@ public class BasicMode : GameMode, IPunObservable
     {
         base.Init(player);
         PhotonNetwork.LocalPlayer.SetScore(0);
+        player.onDeath.AddListener(AddDeathCount);
     }
 
-    private void AddDeathCount()
+    private void AddDeathCount(Entity player)
     {
-        deathCount++;
-        Debug.Log(deathCount);
-        gameObject.SetActive(false);
+        PhotonNetwork.LocalPlayer.AddScore(-1);
+        player.RestoreHP();
+        player.Root.position = new Vector3(0, 5, 0);
     }
 
     public void Update()

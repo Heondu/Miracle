@@ -1475,6 +1475,7 @@ GameObject:
   - component: {fileID: 3926188322212948856}
   - component: {fileID: 4103420677415795992}
   - component: {fileID: 157085017488490522}
+  - component: {fileID: 895845088783870288}
   m_Layer: 6
   m_Name: Leg_L
   m_TagString: Untagged
@@ -1713,14 +1714,31 @@ MonoBehaviour:
   ObservedComponentsFoldoutOpen: 1
   Group: 0
   prefixField: -1
-  Synchronization: 2
+  Synchronization: 3
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents:
   - {fileID: 4103420677415795992}
+  - {fileID: 895845088783870288}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!114 &895845088783870288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4103420677415795984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1 &4103420677417441690
 GameObject:
   m_ObjectHideFlags: 0
@@ -1738,6 +1756,7 @@ GameObject:
   - component: {fileID: 3926188322214629122}
   - component: {fileID: 4103420677417441634}
   - component: {fileID: 7894971147458395354}
+  - component: {fileID: 3454480231495167139}
   m_Layer: 6
   m_Name: Torso
   m_TagString: Untagged
@@ -1975,15 +1994,32 @@ MonoBehaviour:
   ObservedComponentsFoldoutOpen: 1
   Group: 0
   prefixField: -1
-  Synchronization: 2
+  Synchronization: 3
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents:
   - {fileID: 4103420677417441634}
+  - {fileID: 3454480231495167139}
   - {fileID: 0}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!114 &3454480231495167139
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4103420677417441690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1 &4103420677651780993
 GameObject:
   m_ObjectHideFlags: 0
@@ -2092,6 +2128,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hpViewer: {fileID: 5587646380599665529}
+  root: {fileID: 4103420678003659044}
+  dieY: -5
   onDeath:
     m_PersistentCalls:
       m_Calls: []
@@ -2158,7 +2196,7 @@ MonoBehaviour:
   ObservedComponentsFoldoutOpen: 1
   Group: 0
   prefixField: -1
-  Synchronization: 2
+  Synchronization: 3
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents:
@@ -2184,6 +2222,7 @@ GameObject:
   - component: {fileID: 3926188322308604603}
   - component: {fileID: 4103420677861381337}
   - component: {fileID: 7210790526680874554}
+  - component: {fileID: 2139603691653921663}
   m_Layer: 6
   m_Name: Shoulder_L
   m_TagString: Untagged
@@ -2421,15 +2460,32 @@ MonoBehaviour:
   ObservedComponentsFoldoutOpen: 1
   Group: 0
   prefixField: -1
-  Synchronization: 2
+  Synchronization: 3
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents:
   - {fileID: 4103420677861381337}
+  - {fileID: 2139603691653921663}
   - {fileID: 0}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!114 &2139603691653921663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4103420677861381329}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1 &4103420677988129381
 GameObject:
   m_ObjectHideFlags: 0
@@ -2592,11 +2648,12 @@ MonoBehaviour:
   ObservedComponentsFoldoutOpen: 1
   Group: 0
   prefixField: -1
-  Synchronization: 2
+  Synchronization: 3
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents:
   - {fileID: 5624984408687797310}
+  - {fileID: 0}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -2633,6 +2690,7 @@ GameObject:
   - component: {fileID: 3926188321536484475}
   - component: {fileID: 4103420678096450073}
   - component: {fileID: 1760212143947542335}
+  - component: {fileID: 727765296996660219}
   m_Layer: 6
   m_Name: Foot_R
   m_TagString: Untagged
@@ -2869,15 +2927,32 @@ MonoBehaviour:
   ObservedComponentsFoldoutOpen: 1
   Group: 0
   prefixField: -1
-  Synchronization: 2
+  Synchronization: 3
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents:
   - {fileID: 4103420678096450073}
+  - {fileID: 727765296996660219}
   - {fileID: 0}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!114 &727765296996660219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4103420678096450065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1 &4103420678135764614
 GameObject:
   m_ObjectHideFlags: 0
@@ -2895,6 +2970,7 @@ GameObject:
   - component: {fileID: 3926188321626128622}
   - component: {fileID: 4103420678135764622}
   - component: {fileID: 4727925184756792187}
+  - component: {fileID: 3967293007880257771}
   m_Layer: 6
   m_Name: Shoulder_R
   m_TagString: Untagged
@@ -3132,15 +3208,32 @@ MonoBehaviour:
   ObservedComponentsFoldoutOpen: 1
   Group: 0
   prefixField: -1
-  Synchronization: 2
+  Synchronization: 3
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents:
   - {fileID: 4103420678135764622}
+  - {fileID: 3967293007880257771}
   - {fileID: 0}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!114 &3967293007880257771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4103420678135764614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1 &4103420678200019096
 GameObject:
   m_ObjectHideFlags: 0
@@ -3158,6 +3251,7 @@ GameObject:
   - component: {fileID: 3926188321957256704}
   - component: {fileID: 4103420678200019040}
   - component: {fileID: 8126422013915387296}
+  - component: {fileID: 6476286142553730105}
   m_Layer: 6
   m_Name: Leg_R
   m_TagString: Untagged
@@ -3396,15 +3490,32 @@ MonoBehaviour:
   ObservedComponentsFoldoutOpen: 1
   Group: 0
   prefixField: -1
-  Synchronization: 2
+  Synchronization: 3
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents:
   - {fileID: 4103420678200019040}
+  - {fileID: 6476286142553730105}
   - {fileID: 0}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!114 &6476286142553730105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4103420678200019096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1 &4103420678273628704
 GameObject:
   m_ObjectHideFlags: 0
@@ -3422,6 +3533,7 @@ GameObject:
   - component: {fileID: 3926188322030595144}
   - component: {fileID: 4103420678273628712}
   - component: {fileID: 2464596672466793745}
+  - component: {fileID: 2802445443485438957}
   m_Layer: 6
   m_Name: Thigh_R
   m_TagString: Untagged
@@ -3659,15 +3771,32 @@ MonoBehaviour:
   ObservedComponentsFoldoutOpen: 1
   Group: 0
   prefixField: -1
-  Synchronization: 2
+  Synchronization: 3
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents:
   - {fileID: 4103420678273628712}
+  - {fileID: 2802445443485438957}
   - {fileID: 0}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!114 &2802445443485438957
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4103420678273628704}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1 &4103420678314225852
 GameObject:
   m_ObjectHideFlags: 0
@@ -3685,6 +3814,7 @@ GameObject:
   - component: {fileID: 3926188321989928676}
   - component: {fileID: 4103420678314225796}
   - component: {fileID: 5420264277766213829}
+  - component: {fileID: 6079411238641339438}
   m_Layer: 6
   m_Name: Thigh_L
   m_TagString: Untagged
@@ -3922,15 +4052,32 @@ MonoBehaviour:
   ObservedComponentsFoldoutOpen: 1
   Group: 0
   prefixField: -1
-  Synchronization: 2
+  Synchronization: 3
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents:
   - {fileID: 4103420678314225796}
+  - {fileID: 6079411238641339438}
   - {fileID: 0}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!114 &6079411238641339438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4103420678314225852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1 &4103420678483546435
 GameObject:
   m_ObjectHideFlags: 0
@@ -3948,6 +4095,7 @@ GameObject:
   - component: {fileID: 3926188323283355437}
   - component: {fileID: 4103420678483546443}
   - component: {fileID: 6550796096782761808}
+  - component: {fileID: 2384601697738598132}
   m_Layer: 6
   m_Name: Arm_L
   m_TagString: Untagged
@@ -4186,15 +4334,32 @@ MonoBehaviour:
   ObservedComponentsFoldoutOpen: 1
   Group: 0
   prefixField: -1
-  Synchronization: 2
+  Synchronization: 3
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents:
   - {fileID: 4103420678483546443}
+  - {fileID: 2384601697738598132}
   - {fileID: 0}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!114 &2384601697738598132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4103420678483546435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1 &4103420678534132510
 GameObject:
   m_ObjectHideFlags: 0
@@ -4214,6 +4379,7 @@ GameObject:
   - component: {fileID: 5049546070899053028}
   - component: {fileID: 5937100370827749199}
   - component: {fileID: 6726675199574203719}
+  - component: {fileID: 7920549665586719738}
   m_Layer: 6
   m_Name: Hand_R
   m_TagString: Untagged
@@ -4450,7 +4616,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ignoreTag:
   - AttackCollision
+  - Weapon
   playerWeapon: {fileID: 5937100370827749199}
+  isGrabbing: 0
+  haveWeapon: 0
+  rigidbody: {fileID: 0}
+  currentGrabObj: {fileID: 0}
+  fixedJoint: {fileID: 0}
 --- !u!114 &5937100370827749199
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4464,6 +4636,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scaleFactor: 2.5
+  id: 0
 --- !u!114 &6726675199574203719
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4479,15 +4652,32 @@ MonoBehaviour:
   ObservedComponentsFoldoutOpen: 1
   Group: 0
   prefixField: -1
-  Synchronization: 2
+  Synchronization: 3
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents:
   - {fileID: 4103420678534135014}
+  - {fileID: 7920549665586719738}
   - {fileID: 0}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!114 &7920549665586719738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4103420678534132510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1 &4103420678697464501
 GameObject:
   m_ObjectHideFlags: 0
@@ -4507,6 +4697,7 @@ GameObject:
   - component: {fileID: 370759379280419427}
   - component: {fileID: 564342298585041364}
   - component: {fileID: 4811359977135760740}
+  - component: {fileID: 3645247158366695252}
   m_Layer: 6
   m_Name: Hand_L
   m_TagString: Untagged
@@ -4743,7 +4934,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ignoreTag:
   - AttackCollision
+  - Weapon
   playerWeapon: {fileID: 564342298585041364}
+  isGrabbing: 0
+  haveWeapon: 0
+  rigidbody: {fileID: 0}
+  currentGrabObj: {fileID: 0}
+  fixedJoint: {fileID: 0}
 --- !u!114 &564342298585041364
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4757,6 +4954,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scaleFactor: 2.5
+  id: 0
 --- !u!114 &4811359977135760740
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4772,15 +4970,32 @@ MonoBehaviour:
   ObservedComponentsFoldoutOpen: 1
   Group: 0
   prefixField: -1
-  Synchronization: 2
+  Synchronization: 3
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents:
   - {fileID: 4103420678697464509}
+  - {fileID: 3645247158366695252}
   - {fileID: 0}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!114 &3645247158366695252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4103420678697464501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1 &4103420678821307574
 GameObject:
   m_ObjectHideFlags: 0
@@ -4798,6 +5013,7 @@ GameObject:
   - component: {fileID: 3926188323620827860}
   - component: {fileID: 4103420678821307582}
   - component: {fileID: 6137318210039629186}
+  - component: {fileID: 5363127983250608544}
   m_Layer: 6
   m_Name: Pelvis
   m_TagString: Untagged
@@ -5037,15 +5253,32 @@ MonoBehaviour:
   ObservedComponentsFoldoutOpen: 1
   Group: 0
   prefixField: -1
-  Synchronization: 2
+  Synchronization: 3
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents:
   - {fileID: 4103420678821307582}
+  - {fileID: 5363127983250608544}
   - {fileID: 0}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!114 &5363127983250608544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4103420678821307574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1 &4103420679200364980
 GameObject:
   m_ObjectHideFlags: 0
@@ -5063,6 +5296,7 @@ GameObject:
   - component: {fileID: 3926188322571718620}
   - component: {fileID: 4103420679200364988}
   - component: {fileID: 5781519332040377443}
+  - component: {fileID: 7956052583012802263}
   m_Layer: 6
   m_Name: Chest
   m_TagString: Untagged
@@ -5302,15 +5536,32 @@ MonoBehaviour:
   ObservedComponentsFoldoutOpen: 1
   Group: 0
   prefixField: -1
-  Synchronization: 2
+  Synchronization: 3
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents:
   - {fileID: 4103420679200364988}
+  - {fileID: 7956052583012802263}
   - {fileID: 0}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!114 &7956052583012802263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4103420679200364980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1 &4103420679210676456
 GameObject:
   m_ObjectHideFlags: 0
@@ -5328,6 +5579,7 @@ GameObject:
   - component: {fileID: 3926188322699765392}
   - component: {fileID: 4103420679210676464}
   - component: {fileID: 3777261581691732373}
+  - component: {fileID: 362171813167435946}
   m_Layer: 6
   m_Name: Foot_L
   m_TagString: Untagged
@@ -5564,15 +5816,32 @@ MonoBehaviour:
   ObservedComponentsFoldoutOpen: 1
   Group: 0
   prefixField: -1
-  Synchronization: 2
+  Synchronization: 3
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents:
   - {fileID: 4103420679210676464}
+  - {fileID: 362171813167435946}
   - {fileID: 0}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!114 &362171813167435946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4103420679210676456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1 &4103420679227498137
 GameObject:
   m_ObjectHideFlags: 0
@@ -5590,6 +5859,7 @@ GameObject:
   - component: {fileID: 3926188322682996739}
   - component: {fileID: 4103420679227498081}
   - component: {fileID: 664547019682270703}
+  - component: {fileID: 8154947752798150324}
   m_Layer: 6
   m_Name: Head
   m_TagString: Untagged
@@ -5828,15 +6098,32 @@ MonoBehaviour:
   ObservedComponentsFoldoutOpen: 1
   Group: 0
   prefixField: -1
-  Synchronization: 2
+  Synchronization: 3
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents:
   - {fileID: 4103420679227498081}
+  - {fileID: 8154947752798150324}
   - {fileID: 0}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!114 &8154947752798150324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4103420679227498137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1 &4103420679259338699
 GameObject:
   m_ObjectHideFlags: 0
@@ -5854,6 +6141,7 @@ GameObject:
   - component: {fileID: 3926188322646974901}
   - component: {fileID: 4103420679259338707}
   - component: {fileID: 266506708523948327}
+  - component: {fileID: 1166423052919513736}
   m_Layer: 6
   m_Name: Arm_R
   m_TagString: Untagged
@@ -6092,15 +6380,32 @@ MonoBehaviour:
   ObservedComponentsFoldoutOpen: 1
   Group: 0
   prefixField: -1
-  Synchronization: 2
+  Synchronization: 3
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents:
   - {fileID: 4103420679259338707}
+  - {fileID: 1166423052919513736}
   - {fileID: 0}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!114 &1166423052919513736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4103420679259338699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1 &4103420679315147827
 GameObject:
   m_ObjectHideFlags: 0
@@ -6322,82 +6627,6 @@ PrefabInstance:
     - target: {fileID: 6360904535323759879, guid: 9a49e7792d210c44788218db9ae148ee, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6360904535411242822, guid: 9a49e7792d210c44788218db9ae148ee, type: 3}
-      propertyPath: fillGradient.key0.b
-      value: 0.1109528
-      objectReference: {fileID: 0}
-    - target: {fileID: 6360904535411242822, guid: 9a49e7792d210c44788218db9ae148ee, type: 3}
-      propertyPath: fillGradient.key0.g
-      value: 0.1109528
-      objectReference: {fileID: 0}
-    - target: {fileID: 6360904535411242822, guid: 9a49e7792d210c44788218db9ae148ee, type: 3}
-      propertyPath: fillGradient.key0.r
-      value: 0.8018868
-      objectReference: {fileID: 0}
-    - target: {fileID: 6360904535411242822, guid: 9a49e7792d210c44788218db9ae148ee, type: 3}
-      propertyPath: fillGradient.key1.b
-      value: 0.048920073
-      objectReference: {fileID: 0}
-    - target: {fileID: 6360904535411242822, guid: 9a49e7792d210c44788218db9ae148ee, type: 3}
-      propertyPath: fillGradient.key1.g
-      value: 0.6965286
-      objectReference: {fileID: 0}
-    - target: {fileID: 6360904535411242822, guid: 9a49e7792d210c44788218db9ae148ee, type: 3}
-      propertyPath: fillGradient.key1.r
-      value: 0.9150943
-      objectReference: {fileID: 0}
-    - target: {fileID: 6360904535411242822, guid: 9a49e7792d210c44788218db9ae148ee, type: 3}
-      propertyPath: fillGradient.key2.b
-      value: 0.07828993
-      objectReference: {fileID: 0}
-    - target: {fileID: 6360904535411242822, guid: 9a49e7792d210c44788218db9ae148ee, type: 3}
-      propertyPath: fillGradient.key2.g
-      value: 0.8584906
-      objectReference: {fileID: 0}
-    - target: {fileID: 6360904535411242822, guid: 9a49e7792d210c44788218db9ae148ee, type: 3}
-      propertyPath: fillGradient.key2.r
-      value: 0.3045776
-      objectReference: {fileID: 0}
-    - target: {fileID: 6360904535411242822, guid: 9a49e7792d210c44788218db9ae148ee, type: 3}
-      propertyPath: fillGradient.m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6360904535411242822, guid: 9a49e7792d210c44788218db9ae148ee, type: 3}
-      propertyPath: backgroundGradient.key0.b
-      value: 0.12388747
-      objectReference: {fileID: 0}
-    - target: {fileID: 6360904535411242822, guid: 9a49e7792d210c44788218db9ae148ee, type: 3}
-      propertyPath: backgroundGradient.key0.g
-      value: 0.05506107
-      objectReference: {fileID: 0}
-    - target: {fileID: 6360904535411242822, guid: 9a49e7792d210c44788218db9ae148ee, type: 3}
-      propertyPath: backgroundGradient.key0.r
-      value: 0.5471698
-      objectReference: {fileID: 0}
-    - target: {fileID: 6360904535411242822, guid: 9a49e7792d210c44788218db9ae148ee, type: 3}
-      propertyPath: backgroundGradient.key1.b
-      value: 0.08392662
-      objectReference: {fileID: 0}
-    - target: {fileID: 6360904535411242822, guid: 9a49e7792d210c44788218db9ae148ee, type: 3}
-      propertyPath: backgroundGradient.key1.g
-      value: 0.36410126
-      objectReference: {fileID: 0}
-    - target: {fileID: 6360904535411242822, guid: 9a49e7792d210c44788218db9ae148ee, type: 3}
-      propertyPath: backgroundGradient.key1.r
-      value: 0.6509434
-      objectReference: {fileID: 0}
-    - target: {fileID: 6360904535411242822, guid: 9a49e7792d210c44788218db9ae148ee, type: 3}
-      propertyPath: backgroundGradient.key2.b
-      value: 0.05334039
-      objectReference: {fileID: 0}
-    - target: {fileID: 6360904535411242822, guid: 9a49e7792d210c44788218db9ae148ee, type: 3}
-      propertyPath: backgroundGradient.key2.g
-      value: 0.5849056
-      objectReference: {fileID: 0}
-    - target: {fileID: 6360904535411242822, guid: 9a49e7792d210c44788218db9ae148ee, type: 3}
-      propertyPath: backgroundGradient.key2.r
-      value: 0.07133702
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9a49e7792d210c44788218db9ae148ee, type: 3}

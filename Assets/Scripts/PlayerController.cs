@@ -17,23 +17,16 @@ public class PlayerController : MonoBehaviourPunCallbacks, IPunObservable
 
     private PlayerInput playerInput;
 
-    private Vector3 nextPosition;
-    private Quaternion nextRotation;
-
     #region IPunObservable implementation
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
-        //if(stream.IsWriting)
-        //{
-        //    stream.SendNext(root.position);
-        //    stream.SendNext(root.rotation);
-        //}
-        //else
-        //{
-        //    root.position = (Vector3)stream.ReceiveNext();
-        //    root.rotation = (Quaternion)stream.ReceiveNext();
-        //}
+        if(stream.IsWriting)
+        {
+        }
+        else
+        {
+        }
     }
 
     #endregion
@@ -49,13 +42,8 @@ public class PlayerController : MonoBehaviourPunCallbacks, IPunObservable
         {
             UpdateRotate();
             UpdateJump();
-            UpdateGrab();
             UpdateAnim();
-        }
-        else
-        {
-            //InterpPosition();
-            //InterpRotation();
+            UpdateGrab();
         }
     }
 
@@ -71,10 +59,8 @@ public class PlayerController : MonoBehaviourPunCallbacks, IPunObservable
     {
         if (playerInput.Move != Vector3.zero)
             Rotate(playerInput.Move);
-            //photonView.RPC(nameof(Rotate), RpcTarget.All, playerInput.Move);
     }
 
-    [PunRPC]
     private void Rotate(Vector3 direction)
     {
         root.forward = Vector3.Slerp(root.forward, direction, Time.deltaTime * rotationSpeed);
@@ -84,10 +70,8 @@ public class PlayerController : MonoBehaviourPunCallbacks, IPunObservable
     {
         if (playerInput.Move != Vector3.zero)
             Move(playerInput.Move.normalized);
-            //photonView.RPC(nameof(Move), RpcTarget.All, playerInput.Move.normalized);
     }
 
-    [PunRPC]
     private void Move(Vector3 direction)
     {
         pelvis.AddForce(pelvis.position + direction * speed);
@@ -97,10 +81,8 @@ public class PlayerController : MonoBehaviourPunCallbacks, IPunObservable
     {
         if (playerInput.Jump && isGrounded)
             Jump();
-            //photonView.RPC(nameof(Jump), RpcTarget.All);
     }
 
-    [PunRPC]
     private void Jump()
     {
         pelvis.AddForce(new Vector3(0, jumpForce, 0));
@@ -128,15 +110,5 @@ public class PlayerController : MonoBehaviourPunCallbacks, IPunObservable
             grabR.Activate();
         else
             grabR.Deactivate();
-    }
-
-    private void InterpPosition()
-    {
-        root.position = Vector3.Slerp(root.position, nextPosition, Time.deltaTime * 2);
-    }
-
-    private void InterpRotation()
-    {
-        root.rotation = Quaternion.Slerp(root.rotation, nextRotation, Time.deltaTime * 2);
     }
 }

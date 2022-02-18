@@ -1,14 +1,18 @@
 using UnityEngine;
+using Photon.Pun;
 
-public class Grab : MonoBehaviour
+public class Grab : MonoBehaviourPun
 {
     [SerializeField] private string[] ignoreTag;
     [SerializeField] private PlayerWeapon playerWeapon;
 
-    private bool isGrabbing = false;
-    private new Rigidbody rigidbody;
-    private GameObject grabbableObj;
-    private FixedJoint fixedJoint;
+    public bool isGrabbing = false;
+    public bool haveWeapon = false;
+    public new Rigidbody rigidbody;
+    private GrabbableObject grabbableObj;
+    public GrabbableObject currentGrabObj;
+    public FixedJoint fixedJoint;
+    private GameObject weaponObj;
 
     private void Awake()
     {
@@ -17,56 +21,52 @@ public class Grab : MonoBehaviour
 
     public void Activate()
     {
-        if (isGrabbing == false && grabbableObj != null)
-        {
-            if (CheckWeapon())
-                return;
+        if (isGrabbing || haveWeapon)
+            return;
 
-            GrabObject();
+        if (weaponObj != null)
+            PickupWeapon();
+
+        if (grabbableObj != null)
+        {
+            Debug.Log("Grab");
+            grabbableObj.GetComponent<PhotonView>().RPC(nameof(grabbableObj.Activate), RpcTarget.All, photonView.ViewID);
         }
     }
 
-    private bool CheckWeapon()
+    private void PickupWeapon()
     {
-        Weapon weapon = grabbableObj.GetComponentInParent<Weapon>();
-        if (weapon != null)
+        Weapon weapon = weaponObj.GetComponentInParent<Weapon>();
+        if (weapon != null && weapon.CanPickup())
         {
             playerWeapon.PickupWeapon(weapon);
-            return true;
         }
-        return false;
-    }
-
-    private void GrabObject()
-    {
-        fixedJoint = grabbableObj.AddComponent<FixedJoint>();
-        fixedJoint.connectedBody = rigidbody;
-        fixedJoint.breakForce = 9001;
-        isGrabbing = true;
     }
 
     public void Deactivate()
     {
-        if (fixedJoint != null)
-            Destroy(fixedJoint);
-        isGrabbing = false;
+        if (isGrabbing)
+        {
+            currentGrabObj.GetComponent<PhotonView>().RPC(nameof(currentGrabObj.Deactivate), RpcTarget.All, photonView.ViewID);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        for (int i = 0; i < ignoreTag.Length; i++)
-        {
-            if (other.CompareTag(ignoreTag[i]))
-                return;
-        }
         if (other.transform.root == transform.root)
             return;
 
-        grabbableObj = other.gameObject;
+        if (other.CompareTag("Weapon"))
+            weaponObj = other.gameObject;
+
+        other.gameObject.TryGetComponent(out grabbableObj);
     }
 
     private void OnTriggerExit(Collider other)
     {
-        grabbableObj = null;
+        //if (other.gameObject == grabbableObj)
+            grabbableObj = null;
+        //if (other.gameObject == weaponObj)
+            weaponObj = null;
     }
 }
