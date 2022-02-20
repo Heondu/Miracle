@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using Photon.Pun;
 using Photon.Realtime;
 
@@ -35,11 +36,20 @@ namespace OnionBagel.PcGame.Miracle
         {
             progressLabel.SetActive(false);
             controlPanel.SetActive(true);
+            IsNameInput();
         }
 
         #endregion
 
         #region Public Methods
+
+        public void IsNameInput()
+        {
+            if(controlPanel.GetComponentInChildren<InputField>().text != "")
+                controlPanel.GetComponentInChildren<Button>().interactable = true;
+            else
+                controlPanel.GetComponentInChildren<Button>().interactable = false;
+        }
 
         public void Play()
         {

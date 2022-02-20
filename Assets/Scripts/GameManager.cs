@@ -66,6 +66,13 @@ namespace OnionBagel.PcGame.Miracle
             ReceiveMsg(msg);
         }
 
+        public override void OnDisconnected(DisconnectCause cause)
+        {
+            SceneManager.LoadScene(0);
+
+            Debug.LogWarningFormat("Launcher: OnDisconnected() was called by PUN with reason {0}", cause);
+        }
+
         #endregion
 
         #region Public Field
