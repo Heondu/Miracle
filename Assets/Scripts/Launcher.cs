@@ -3,6 +3,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Photon.Pun;
 using Photon.Realtime;
+using TMPro;
 
 namespace OnionBagel.PcGame.Miracle
 {
@@ -13,6 +14,10 @@ namespace OnionBagel.PcGame.Miracle
         [Tooltip("The Ui Panel to let the user enter name, connect and play")]
         [SerializeField]
         private GameObject controlPanel;
+        [SerializeField]
+        private TMP_InputField nameInputField;
+        [SerializeField]
+        private Button playButton;
         [Tooltip("The UI Label to inform the user that the connection is in progress")]
         [SerializeField]
         private GameObject progressLabel;
@@ -45,10 +50,10 @@ namespace OnionBagel.PcGame.Miracle
 
         public void IsNameInput()
         {
-            if(controlPanel.GetComponentInChildren<InputField>().text != "")
-                controlPanel.GetComponentInChildren<Button>().interactable = true;
+            if(nameInputField.text != "")
+                playButton.interactable = true;
             else
-                controlPanel.GetComponentInChildren<Button>().interactable = false;
+                playButton.interactable = false;
         }
 
         public void Play()

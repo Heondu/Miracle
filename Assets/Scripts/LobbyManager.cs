@@ -99,7 +99,7 @@ namespace OnionBagel.PcGame.Miracle
             ros.MaxPlayers = (byte)(Mathf.Pow(2, dropdown.value + 1));
             ros.IsVisible = true;
 
-            if (txtPswd.text != null)
+            if (txtPswd.text != "")
             {
                 roomName += "*" + txtPswd.text;
                 ros.CustomRoomProperties = new Hashtable() { { "pwd", "1"}, { "room", mapDropdown.options[mapDropdown.value].text} };
@@ -172,10 +172,10 @@ namespace OnionBagel.PcGame.Miracle
             isConnecting = true;
 
             progressLabel.SetActive(true);
-            passwordPanel.SetActive(false);
-            crFaileddPanel.SetActive(false);
-            createRoomPanel.SetActive(false);
-            controlPanel.SetActive(false);
+            //passwordPanel.SetActive(false);
+            //crFaileddPanel.SetActive(false);
+            //createRoomPanel.SetActive(false);
+            //controlPanel.SetActive(false);
         }
 
         #endregion
@@ -186,11 +186,11 @@ namespace OnionBagel.PcGame.Miracle
         {
             if (-1!=roomName.IndexOf("*"))
             {
-                progressLabel.SetActive(false);
+                //progressLabel.SetActive(false);
                 passwordPanel.SetActive(true);
-                crFaileddPanel.SetActive(false);
-                createRoomPanel.SetActive(false);
-                controlPanel.SetActive(true);
+                //crFaileddPanel.SetActive(false);
+                //createRoomPanel.SetActive(false);
+                //controlPanel.SetActive(true);
                 pwdRoom = roomName;
             }
             else

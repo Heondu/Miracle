@@ -1,7 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class Room : MonoBehaviour
 {
@@ -9,16 +8,25 @@ public class Room : MonoBehaviour
     public int playerCount = 0;
     public int maxPlayer = 0;
 
-    [System.NonSerialized]
-    public Text roomDataTxt;
-
-    private void Awake()
-    {
-        roomDataTxt = GetComponentInChildren<Text>();
-    }
+    public TextMeshProUGUI  textRoomName;
+    public TextMeshProUGUI  textPlayer;
+    public Image            imageLock;
+    public Image            imageUnlock;
     
     public void UpdateInfo()
     {
-        roomDataTxt.text = string.Format(" {0} [{1} / {2}]", (roomName.Split('*'))[0], playerCount.ToString("00"), maxPlayer.ToString("00"));//스플릿 맞는지 확인
+        string[] roomData = roomName.Split('*');
+        textRoomName.text = roomData[0];
+        textPlayer.text = $"{playerCount}/{maxPlayer}";
+        if (roomData.Length > 1)
+        {
+            imageLock.gameObject.SetActive(true);
+            imageUnlock.gameObject.SetActive(false);
+        }
+        else
+        {
+            imageLock.gameObject.SetActive(false);
+            imageUnlock.gameObject.SetActive(true);
+        }
     }
 }

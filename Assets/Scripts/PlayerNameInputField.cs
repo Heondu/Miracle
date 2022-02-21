@@ -1,14 +1,10 @@
 using UnityEngine;
 using UnityEngine.UI;
-
 using Photon.Pun;
-using Photon.Realtime;
-
-using System.Collections;
+using TMPro;
 
 namespace OnionBagel.PcGame.Miracle
 {
-    [RequireComponent(typeof(InputField))]
     public class PlayerNameInputField : MonoBehaviour
     {
         #region Private Constants
@@ -22,7 +18,7 @@ namespace OnionBagel.PcGame.Miracle
         void Start()
         {
             string defaultName = string.Empty;
-            InputField inputField = GetComponent<InputField>();
+            TMP_InputField inputField = GetComponent<TMP_InputField>();
             if (inputField != null)
             {
                 if (PlayerPrefs.HasKey(playerNamePrefKey))
