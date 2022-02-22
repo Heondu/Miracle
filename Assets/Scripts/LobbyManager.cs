@@ -28,6 +28,10 @@ namespace OnionBagel.PcGame.Miracle
         [SerializeField]
         private GameObject createRoomPanel;
         [SerializeField]
+        private TMP_InputField cRInput;
+        [SerializeField]
+        private Button cRButton;
+        [SerializeField]
         private GameObject crFaileddPanel;
         [SerializeField]
         private GameObject passwordPanel;
@@ -75,11 +79,21 @@ namespace OnionBagel.PcGame.Miracle
             crFaileddPanel.SetActive(false);
             createRoomPanel.SetActive(false);
             controlPanel.SetActive(true);
+
+            cRButton.interactable = false;
         }
 
         #endregion
 
         #region Public Methods
+
+        public void IsNameInput()
+        {
+            if (cRInput.text != "")
+                cRButton.interactable = true;
+            else
+                cRButton.interactable = false;
+        }
 
         public void OnCreateRoomClick()
         {
@@ -99,7 +113,7 @@ namespace OnionBagel.PcGame.Miracle
             ros.MaxPlayers = (byte)(Mathf.Pow(2, dropdown.value + 1));
             ros.IsVisible = true;
 
-            if (txtPswd.text != null)
+            if (txtPswd.text != "")
             {
                 roomName += "*" + txtPswd.text;
                 ros.CustomRoomProperties = new Hashtable() { { "pwd", "1"}, { "room", mapDropdown.options[mapDropdown.value].text} };
@@ -164,7 +178,7 @@ namespace OnionBagel.PcGame.Miracle
         public void OnJoinRandomRoomClick()
         {
             Hashtable ros = new Hashtable() { { "pwd", "0" } };
-            PhotonNetwork.JoinRandomRoom(ros, 0);//랜덤 설정 막아놓던지 프로퍼티 설정하던지.
+            PhotonNetwork.JoinRandomRoom(ros, 0);
         }
 
         public void Connect()//커넥팅 창 표시 함수.

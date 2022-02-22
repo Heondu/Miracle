@@ -86,7 +86,7 @@ namespace OnionBagel.PcGame.Miracle
         public void OnSendChatMsg()
         {
             string msg = string.Format("[{0}] {1}", PhotonNetwork.LocalPlayer.NickName, ifSendMsg.text);
-            photonView.RPC("ReceiveMsg", RpcTarget.OthersBuffered, msg);
+            photonView.RPC("ReceiveMsg", RpcTarget.Others, msg);
             ReceiveMsg(msg);
 
             ifSendMsg.text = "";
