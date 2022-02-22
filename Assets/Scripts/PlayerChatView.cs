@@ -10,8 +10,8 @@ public class PlayerChatView : MonoBehaviourPunCallbacks
 {
     public GameObject ChatPrefab;
     public GameObject Chat_UI;
-    public InputField ifSendMsg;
-    public TMP_Text Chat;
+    public TMP_InputField ifSendMsg;
+    public TextMeshProUGUI Chat;
 
     public int textspt = 12;
 
@@ -43,7 +43,7 @@ public class PlayerChatView : MonoBehaviourPunCallbacks
     void Awake()
     {
         ChatPrefab = GameObject.FindGameObjectWithTag("CHAT");
-        ifSendMsg = ChatPrefab.GetComponent<InputField>();
+        ifSendMsg = ChatPrefab.GetComponent<TMP_InputField>();
         ifSendMsg.onEndEdit.AddListener(OnSendChatMsg);
 
         Chat_UI.SetActive(false);

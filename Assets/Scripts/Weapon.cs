@@ -1,12 +1,22 @@
 using UnityEngine;
 using Photon.Pun;
+using Photon.Realtime;
 
-public class Weapon : MonoBehaviourPun
+public class Weapon : MonoBehaviourPunCallbacks
 {
     [SerializeField] private Collider[] colliders;
     [SerializeField] private AttackCollision attackCollision;
     private new Rigidbody rigidbody;
     private Transform owner;
+
+    public override void OnPlayerEnteredRoom(Player other)
+    {
+        if (PhotonNetwork.IsMasterClient)
+        {
+            if (owner != null)
+                photonView.RPC(nameof(Pick), RpcTarget.Others, owner.GetComponent<PhotonView>().ViewID);
+        }
+    }
 
     private void Awake()
     {

@@ -28,6 +28,8 @@ public class UIManager : MonoBehaviour
     [Header("Death Match Mode")]
     [SerializeField] private TextMeshProUGUI playerCountText;
 
+    public static bool IsUIControl = false;
+
     public void CheckGameMode(EGameMode gameMode)
     {
         GameModeIs[] gameModes = GetComponentsInChildren<GameModeIs>();
@@ -100,7 +102,7 @@ public class UIManager : MonoBehaviour
         scoreTexts = scoreHolder.GetComponentsInChildren<ScoreText>();
         for (; i < scoreTexts.Length; i++)
         {
-            Destroy(scoreTexts[i]);
+            Destroy(scoreTexts[i].gameObject);
         }
     }
 

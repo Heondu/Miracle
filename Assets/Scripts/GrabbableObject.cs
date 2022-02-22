@@ -1,8 +1,21 @@
 using UnityEngine;
 using Photon.Pun;
+using Photon.Realtime;
 
-public class GrabbableObject : MonoBehaviourPun
+public class GrabbableObject : MonoBehaviourPunCallbacks
 {
+    public override void OnPlayerEnteredRoom(Player other)
+    {
+        if (PhotonNetwork.IsMasterClient)
+        {
+            FixedJoint[] fixedJoints = GetComponents<FixedJoint>();
+            for (int i = 0; i < fixedJoints.Length; i++)
+            {
+                photonView.RPC(nameof(Activate), RpcTarget.Others, fixedJoints[i].connectedBody.GetComponent<PhotonView>().ViewID);
+            }
+        }
+    }
+
     private Rigidbody rb;
 
     private void Awake()

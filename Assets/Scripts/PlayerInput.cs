@@ -12,7 +12,7 @@ public class PlayerInput : MonoBehaviourPun
 
     private void Update()
     {
-        if(photonView.IsMine)
+        if (photonView.IsMine)
         {
             UpdateAxis();
             UpdateJump();

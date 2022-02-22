@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Photon.Pun;
 using Photon.Realtime;
+using TMPro;
 
 namespace OnionBagel.PcGame.Miracle
 {
@@ -16,9 +17,9 @@ namespace OnionBagel.PcGame.Miracle
         public GameObject playerPrefab;
         public EGameMode GameMode;
 
-        public Text msgList;
-        public InputField ifSendMsg;
-        public Text playerCount;
+        public TextMeshProUGUI msgList;
+        public TMP_InputField ifSendMsg;
+        public TextMeshProUGUI playerCount;
 
         #endregion
 
@@ -99,6 +100,16 @@ namespace OnionBagel.PcGame.Miracle
             msgList.text += "\n" + msg;
         }
 
+        public void OnSelectChat()
+        {
+            UIManager.IsUIControl = true;
+        }
+
+        public void OnDeselectChat()
+        {
+            UIManager.IsUIControl = false;
+        }
+
         public void LeaveRoom()
         {
             PhotonNetwork.LeaveRoom();
@@ -124,6 +135,7 @@ namespace OnionBagel.PcGame.Miracle
                     GameObject player = PhotonNetwork.Instantiate(playerPrefab.name, new Vector3(0f, 5f, 0f), Quaternion.identity, 0);
                     CheckGameMode(player.GetComponent<Entity>());
                     UIManager.Instance.CheckGameMode(GameMode);
+                    UIManager.IsUIControl = false;
                 }
                 else
                 {
@@ -133,6 +145,17 @@ namespace OnionBagel.PcGame.Miracle
 
             PhotonNetwork.IsMessageQueueRunning = true;
             Invoke("CheckPlayerCount", 0.5f);
+        }
+
+        void Update()
+        {
+            //if (!UIManager.IsUIControl)
+            //{
+            //    if (Input.GetKeyDown(KeyCode.Return))
+            //    {
+            //        ifSendMsg.Select();
+            //    }
+            //}
         }
 
         void CheckPlayerCount()

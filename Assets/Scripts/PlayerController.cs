@@ -40,16 +40,19 @@ public class PlayerController : MonoBehaviourPunCallbacks, IPunObservable
     {
         if (photonView.IsMine)
         {
-            UpdateRotate();
-            UpdateJump();
+            if (!UIManager.IsUIControl)
+            {
+                UpdateRotate();
+                UpdateJump();
+                UpdateGrab();
+            }
             UpdateAnim();
-            UpdateGrab();
         }
     }
 
     private void FixedUpdate()
     {
-        if (photonView.IsMine)
+        if (photonView.IsMine && !UIManager.IsUIControl)
         {
             UpdateMove();
         }
@@ -91,12 +94,19 @@ public class PlayerController : MonoBehaviourPunCallbacks, IPunObservable
 
     private void UpdateAnim()
     {
-        animator.SetFloat("movement", playerInput.Move.magnitude);
+        if (!UIManager.IsUIControl)
+        {
+            animator.SetFloat("movement", playerInput.Move.magnitude);
 
-        animator.SetBool("isLeftHandUp", playerInput.GrabL);
-        animator.SetBool("isRightHandUp", playerInput.GrabR);
+            animator.SetBool("isLeftHandUp", playerInput.GrabL);
+            animator.SetBool("isRightHandUp", playerInput.GrabR);
 
-        animator.SetBool("isHandsUp", playerInput.HandsUp);
+            animator.SetBool("isHandsUp", playerInput.HandsUp);
+        }
+        else
+        {
+            animator.SetFloat("movement", 0);
+        }
     }
 
     private void UpdateGrab()
