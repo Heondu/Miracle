@@ -15,6 +15,7 @@ public class Entity : MonoBehaviourPunCallbacks, IPunObservable
     public UnityEvent<Entity> onDeath = new UnityEvent<Entity>();
 
     public static GameObject LocalPlayerInstance;
+    public bool isDie = false;
 
     #region IPunObservable implementation
 
@@ -47,29 +48,37 @@ public class Entity : MonoBehaviourPunCallbacks, IPunObservable
     {
         if (root.position.y <= dieY)
         {
-            onDeath.Invoke(this);
+            if (!isDie)
+            {
+                onDeath.Invoke(this);
+                isDie = true;
+            }
         }
+        else
+        {
+            isDie = false;
+        }
+    }
+
+    public void Setup()
+    {
+        RestoreHP();
+        Root.position = new Vector3(0, 5, 0);
     }
 
     public void TakeDamage(float damage)
     {
         if (PhotonNetwork.IsConnected)
-        {
             photonView.RPC("OnDamage", RpcTarget.All, damage);
-        }
         else
-        {
             OnDamage(damage);
-        }
     }
 
     [PunRPC]
     public void OnDamage(float damage)
     {
         if (status.CurrentHP == 0)
-        {
             onDeath.Invoke(this);
-        }
 
         status.CurrentHP -= (int)damage;
     }

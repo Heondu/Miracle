@@ -21,7 +21,9 @@ public class UIManager : MonoBehaviour
 
     [Header("Basic Mode")]
     [SerializeField] private TextMeshProUGUI timeText;
-    [SerializeField] private TextMeshProUGUI scoreText;
+    [SerializeField] private Transform scoreHolder;
+    [SerializeField] private GameObject scoreUIPrefab;
+    private List<Player> playerList = new List<Player>();
 
     [Header("Death Match Mode")]
     [SerializeField] private TextMeshProUGUI playerCountText;
@@ -56,13 +58,26 @@ public class UIManager : MonoBehaviour
 
     public void UpdateScoreText()
     {
-        scoreText.text = "";
-        Player[] playerList = PhotonNetwork.PlayerList;
-        for (int i = 0; i < playerList.Length; i++)
+        SortScore();
+        CreateAndRemoveScoreUI();
+        SetupScoreUI();
+    }
+
+    private void SortScore()
+    {
+        playerList.Clear();
+
+        Dictionary<int, Player> playerDict = PhotonNetwork.CurrentRoom.Players;
+        foreach (int key in playerDict.Keys)
         {
-            for (int j = 1; j < playerList.Length - i; j++)
+            playerList.Add(playerDict[key]);
+        }
+
+        for (int i = 0; i < playerList.Count; i++)
+        {
+            for (int j = 1; j < playerList.Count - i; j++)
             {
-                if (playerList[j].GetScore() > playerList[j - 1].GetScore())
+                if (playerList[j].GetScore() < playerList[j - 1].GetScore())
                 {
                     Player temp = playerList[j - 1];
                     playerList[j - 1] = playerList[j];
@@ -70,11 +85,31 @@ public class UIManager : MonoBehaviour
                 }
             }
         }
+    }
 
-        for (int i = 0; i < playerList.Length; i++)
+    private void CreateAndRemoveScoreUI()
+    {
+        ScoreText[] scoreTexts = scoreHolder.GetComponentsInChildren<ScoreText>();
+        int i = 0;
+        for (; i < playerList.Count; i++)
         {
-            scoreText.text += $"{i + 1}. {playerList[i].NickName}\n";
-            
+            if (scoreTexts.Length <= i)
+                Instantiate(scoreUIPrefab, scoreHolder);
+        }
+
+        scoreTexts = scoreHolder.GetComponentsInChildren<ScoreText>();
+        for (; i < scoreTexts.Length; i++)
+        {
+            Destroy(scoreTexts[i]);
+        }
+    }
+
+    private void SetupScoreUI()
+    {
+        ScoreText[] scoreTexts = scoreHolder.GetComponentsInChildren<ScoreText>();
+        for (int i = 0; i < scoreTexts.Length; i++)
+        {
+            scoreTexts[i].Setup((i + 1).ToString(), playerList[i].NickName, playerList[i].GetScore().ToString());
         }
     }
 }

@@ -4,7 +4,9 @@ using Photon.Pun;
 
 public class ScoreText : MonoBehaviourPun
 {
-    private TextMeshProUGUI scoreText;
+    [SerializeField] private TextMeshProUGUI textRanking;
+    [SerializeField] private TextMeshProUGUI textNickname;
+    [SerializeField] private TextMeshProUGUI textDeathCount;
 
     #region IPunObservable implementation
 
@@ -12,18 +14,22 @@ public class ScoreText : MonoBehaviourPun
     {
         if (stream.IsWriting)
         {
-            stream.SendNext(scoreText.text);
+            stream.SendNext(textRanking.text);
+            stream.SendNext(textNickname.text);
+            stream.SendNext(textDeathCount.text);
         }
         else
         {
-            scoreText.text = (string)stream.ReceiveNext();
+            Setup((string)stream.ReceiveNext(), (string)stream.ReceiveNext(), (string)stream.ReceiveNext());
         }
     }
 
     #endregion
 
-    private void Awake()
+    public void Setup(string ranking, string nickname, string deathCount)
     {
-        scoreText = GetComponent<TextMeshProUGUI>();
+        textRanking.text = ranking;
+        textNickname.text = nickname;
+        textDeathCount.text = deathCount;
     }
 }

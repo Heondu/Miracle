@@ -32,24 +32,18 @@ public class BasicMode : GameMode, IPunObservable
         base.Init(player);
         PhotonNetwork.LocalPlayer.SetScore(0);
         player.onDeath.AddListener(AddDeathCount);
+        //photonView.RPC(nameof(UpdateScoreUI), RpcTarget.All);
     }
 
     private void AddDeathCount(Entity player)
     {
-        PhotonNetwork.LocalPlayer.AddScore(-1);
-        player.RestoreHP();
-        player.Root.position = new Vector3(0, 5, 0);
+        PhotonNetwork.LocalPlayer.AddScore(1);
+        player.Setup();
+        //photonView.RPC(nameof(UpdateScoreUI), RpcTarget.All);
     }
 
     public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-            PhotonNetwork.LocalPlayer.AddScore(1);
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-            PhotonNetwork.LocalPlayer.AddScore(-1);
-
-        UpdateScoreUI();
-
         if (PhotonNetwork.IsMasterClient)
         {
             elapsedTime += Time.deltaTime;
@@ -60,8 +54,11 @@ public class BasicMode : GameMode, IPunObservable
         {
             photonView.RPC(nameof(LeaveRoom), RpcTarget.All);
         }
+
+        UpdateScoreUI();
     }
 
+    [PunRPC]
     private void UpdateScoreUI()
     {
         UIManager.Instance.UpdateScoreText();
