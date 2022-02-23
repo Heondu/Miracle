@@ -7998,7 +7998,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2147131123}
         m_TargetAssemblyTypeName: OnionBagel.PcGame.Miracle.LobbyManager, Assembly-CSharp
-        m_MethodName: OnCreateRoomClick
+        m_MethodName: OnJoinRandomRoomClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

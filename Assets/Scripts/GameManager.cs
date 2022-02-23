@@ -17,8 +17,12 @@ namespace OnionBagel.PcGame.Miracle
         public EGameMode GameMode;
 
         public Text msgList;
+        public Scrollbar vert;
         public InputField ifSendMsg;
         public Text playerCount;
+
+        public int max_chat_log = 100;
+        private int chat_log;
 
         #endregion
 
@@ -97,6 +101,11 @@ namespace OnionBagel.PcGame.Miracle
         void ReceiveMsg(string msg)
         {
             msgList.text += "\n" + msg;
+            vert.value = 0;
+
+            chat_log++;
+            if (chat_log > max_chat_log)
+                msgList.text = msgList.text.Substring(msgList.text.IndexOf("\n") + 1);
         }
 
         public void LeaveRoom()
@@ -111,6 +120,7 @@ namespace OnionBagel.PcGame.Miracle
         void Start()
         {
             Instance = this;
+            chat_log = 0;
 
             if (playerPrefab == null)
             {
