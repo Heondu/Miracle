@@ -116,11 +116,23 @@ namespace OnionBagel.PcGame.Miracle
             if (txtPswd.text != "")
             {
                 roomName += "*" + txtPswd.text;
-                ros.CustomRoomProperties = new Hashtable() { { "pwd", "1"}, { "room", mapDropdown.options[mapDropdown.value].text} };
+                if(mapDropdown.options[mapDropdown.value].text == "Random")
+                {
+                    int i=Random.Range(1, mapDropdown.options.Count);
+                    ros.CustomRoomProperties = new Hashtable() { { "pwd", "1" }, { "room", mapDropdown.options[i].text } };
+                }
+                else
+                    ros.CustomRoomProperties = new Hashtable() { { "pwd", "1"}, { "room", mapDropdown.options[mapDropdown.value].text} };
             }
             else
             {
-                ros.CustomRoomProperties = new Hashtable() { { "pwd", "0" }, { "room", mapDropdown.options[mapDropdown.value].text } };
+                if (mapDropdown.options[mapDropdown.value].text == "Random")
+                {
+                    int i = Random.Range(1, mapDropdown.options.Count);
+                    ros.CustomRoomProperties = new Hashtable() { { "pwd", "0" }, { "room", mapDropdown.options[i].text } };
+                }
+                else
+                    ros.CustomRoomProperties = new Hashtable() { { "pwd", "0" }, { "room", mapDropdown.options[mapDropdown.value].text } };
             }
 
             foreach (GameObject obj in GameObject.FindGameObjectsWithTag("ROOM"))
@@ -339,8 +351,10 @@ namespace OnionBagel.PcGame.Miracle
             if (!PhotonNetwork.IsMasterClient)//오류 나면 생각
                 return;
             Debug.Log(cp["room"].ToString());
+
             PhotonNetwork.LoadLevel(cp["room"].ToString());
-            Debug.Log("sk");
+
+            Debug.Log("Finish MakeRoom");
         }
 
         #endregion
