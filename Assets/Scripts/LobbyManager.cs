@@ -44,6 +44,7 @@ namespace OnionBagel.PcGame.Miracle
         public TMP_InputField txtPswd;
         public TMP_InputField txtPassword;
         public TMP_Dropdown dropdown;
+        public TMP_Dropdown gameModeDropdown;
         public TMP_Dropdown mapDropdown;
 
         public GameObject room;
@@ -113,15 +114,19 @@ namespace OnionBagel.PcGame.Miracle
             ros.MaxPlayers = (byte)(Mathf.Pow(2, dropdown.value + 1));
             ros.IsVisible = true;
 
+            int passwordFlag = 0;
             if (txtPswd.text != "")
             {
                 roomName += "*" + txtPswd.text;
-                ros.CustomRoomProperties = new Hashtable() { { "pwd", "1"}, { "room", mapDropdown.options[mapDropdown.value].text} };
+                passwordFlag = 1;
             }
-            else
-            {
-                ros.CustomRoomProperties = new Hashtable() { { "pwd", "0" }, { "room", mapDropdown.options[mapDropdown.value].text } };
-            }
+
+            ros.CustomRoomProperties = new Hashtable()
+                {
+                    { "pwd", passwordFlag },
+                    { "gameMode", gameModeDropdown.options[gameModeDropdown.value].text },
+                    { "room", mapDropdown.options[mapDropdown.value].text }
+                };
 
             foreach (GameObject obj in GameObject.FindGameObjectsWithTag("ROOM"))
             {

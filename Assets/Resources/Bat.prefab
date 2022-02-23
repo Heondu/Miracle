@@ -170,6 +170,7 @@ GameObject:
   - component: {fileID: -6759642834521853476}
   - component: {fileID: 1996744553428316004}
   - component: {fileID: -2257614113586379201}
+  - component: {fileID: 4142850667173977785}
   m_Layer: 0
   m_Name: Bat
   m_TagString: Weapon
@@ -293,6 +294,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d490a5247e1007743b8991aeea988894, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4142850667173977785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5267967942388014095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bdeb647ce5d802409cc0dc8ed36287f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  limitY: -5
+  offset: {x: 0, y: 5, z: 0}
 --- !u!1 &7070321208530613573
 GameObject:
   m_ObjectHideFlags: 0

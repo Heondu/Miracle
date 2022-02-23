@@ -4,9 +4,11 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.Events;
 using Photon.Pun;
 using Photon.Realtime;
 using TMPro;
+using Hashtable = ExitGames.Client.Photon.Hashtable;
 
 namespace OnionBagel.PcGame.Miracle
 {
@@ -15,7 +17,6 @@ namespace OnionBagel.PcGame.Miracle
         #region Public Variables region
 
         public GameObject playerPrefab;
-        public EGameMode GameMode;
 
         public TextMeshProUGUI msgList;
         public TMP_InputField ifSendMsg;
@@ -24,6 +25,8 @@ namespace OnionBagel.PcGame.Miracle
 
         public int max_chat_log = 100;
         private int chat_log;
+
+        public UnityEvent<string> onSendChatMsg = new UnityEvent<string>();
 
         #endregion
 
@@ -93,9 +96,12 @@ namespace OnionBagel.PcGame.Miracle
             string msg = string.Format("[{0}] {1}", PhotonNetwork.LocalPlayer.NickName, ifSendMsg.text);
             photonView.RPC("ReceiveMsg", RpcTarget.Others, msg);
             ReceiveMsg(msg);
+            onSendChatMsg.Invoke(ifSendMsg.text);
 
             ifSendMsg.text = "";
-            //ifSendMsg.ActivateInputField();
+            //ifSendMsg.interactable = false;
+            //ifSendMsg.interactable = true;
+            ifSendMsg.ActivateInputField();
             //ifSendMsg.Select();
         }
 
@@ -144,8 +150,10 @@ namespace OnionBagel.PcGame.Miracle
                 {
                     Debug.LogFormat("We are Instantiating LocalPlayer from {0}", SceneManager.GetActiveScene().name);
                     GameObject player = PhotonNetwork.Instantiate(playerPrefab.name, new Vector3(0f, 5f, 0f), Quaternion.identity, 0);
-                    CheckGameMode(player.GetComponent<Entity>());
-                    UIManager.Instance.CheckGameMode(GameMode);
+
+                    Hashtable cp = PhotonNetwork.CurrentRoom.CustomProperties;
+                    CheckGameMode(player.GetComponent<Entity>(), cp["gameMode"].ToString());
+                    UIManager.Instance.CheckGameMode(cp["gameMode"].ToString());
                     UIManager.IsUIControl = false;
                 }
                 else
@@ -160,14 +168,18 @@ namespace OnionBagel.PcGame.Miracle
 
         void Update()
         {
-            //if (!UIManager.IsUIControl)
-            //{
-            //    if (Input.GetKeyDown(KeyCode.Return))
-            //    {
-            //        ifSendMsg.DeactivateInputField();
-            //        ifSendMsg.Select();
-            //    }
-            //}
+            if (!UIManager.IsUIControl)
+            {
+                if (Input.GetKeyDown(KeyCode.Return))
+                {
+                    ifSendMsg.Select();
+                }
+            }
+            else
+            {
+                if (Input.GetKeyDown(KeyCode.Return))
+                    OnSendChatMsg();
+            }
         }
 
         void CheckPlayerCount()
@@ -177,20 +189,15 @@ namespace OnionBagel.PcGame.Miracle
             playerCount.text = String.Format("[{0} / {1}]", currPlayer, maxPlayer);
         }
 
-        void CheckGameMode(Entity player)
+        void CheckGameMode(Entity player, string gameMode)
         {
             GameMode[] gameModes = GetComponentsInChildren<GameMode>();
             foreach (GameMode gm in gameModes)
             {
-                if (gm.gameMode == GameMode)
-                {
+                if (gm.gameMode.ToString() == gameMode)
                     gm.Init(player);
-                }
                 else
-                {
                     gm.gameObject.SetActive(false);
-                }
-
             }
         }
         

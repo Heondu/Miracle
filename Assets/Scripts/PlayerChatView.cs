@@ -1,10 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
 using Photon.Pun;
-using Photon.Realtime;
+using OnionBagel.PcGame.Miracle;
 
 public class PlayerChatView : MonoBehaviourPunCallbacks
 {
@@ -44,7 +41,7 @@ public class PlayerChatView : MonoBehaviourPunCallbacks
     {
         ChatPrefab = GameObject.FindGameObjectWithTag("CHAT");
         ifSendMsg = ChatPrefab.GetComponent<TMP_InputField>();
-        ifSendMsg.onEndEdit.AddListener(OnSendChatMsg);
+        GameManager.Instance.onSendChatMsg.AddListener(OnSendChatMsg);
 
         Chat_UI.SetActive(false);
     }

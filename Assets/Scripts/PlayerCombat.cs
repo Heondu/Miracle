@@ -16,6 +16,9 @@ public class PlayerCombat : MonoBehaviour
 
     private void Update()
     {
+        if (UIManager.IsUIControl)
+            return;
+
         if (Input.GetKey(KeyCode.F))
         {
             if (Input.GetMouseButtonDown(0))

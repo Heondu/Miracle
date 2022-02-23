@@ -30,12 +30,12 @@ public class UIManager : MonoBehaviour
 
     public static bool IsUIControl = false;
 
-    public void CheckGameMode(EGameMode gameMode)
+    public void CheckGameMode(string gameMode)
     {
         GameModeIs[] gameModes = GetComponentsInChildren<GameModeIs>();
         foreach (GameModeIs gm in gameModes)
         {
-            if (gm.gameMode == gameMode)
+            if (gm.gameMode.ToString() == gameMode)
             {
                 gm.gameObject.SetActive(true);
             }

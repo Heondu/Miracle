@@ -2038,7 +2038,7 @@ GameObject:
   - component: {fileID: 5751417037021869045}
   - component: {fileID: 7424386581704440998}
   - component: {fileID: 2716388001622636963}
-  - component: {fileID: -3045141786063912176}
+  - component: {fileID: 8484084316455918619}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -2225,7 +2225,7 @@ MonoBehaviour:
   ifSendMsg: {fileID: 0}
   Chat: {fileID: 4765275286113663045}
   textspt: 10
---- !u!114 &-3045141786063912176
+--- !u!114 &8484084316455918619
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2234,7 +2234,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4103420677651780993}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d36e85466abca7c45b07617d791b4997, type: 3}
+  m_Script: {fileID: 11500000, guid: 4bebcf1a300ce4e459ab02a338514dbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &4103420677861381329
