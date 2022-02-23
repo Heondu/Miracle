@@ -96,6 +96,7 @@ namespace OnionBagel.PcGame.Miracle
 
             ifSendMsg.text = "";
             //ifSendMsg.ActivateInputField();
+            //ifSendMsg.Select();
         }
 
         [PunRPC]
@@ -163,6 +164,7 @@ namespace OnionBagel.PcGame.Miracle
             //{
             //    if (Input.GetKeyDown(KeyCode.Return))
             //    {
+            //        ifSendMsg.DeactivateInputField();
             //        ifSendMsg.Select();
             //    }
             //}
