@@ -13,10 +13,13 @@ public class Grab : MonoBehaviourPun
     public GrabbableObject currentGrabObj;
     public FixedJoint fixedJoint;
     private GameObject weaponObj;
+    private PlayerController playerController;
 
     private void Awake()
     {
         rigidbody = GetComponent<Rigidbody>();
+        GetComponentInParent<Entity>().onDeath.AddListener(OnPlayerDeath);
+        playerController = GetComponentInParent<PlayerController>();
     }
 
     public void Activate()
@@ -29,8 +32,9 @@ public class Grab : MonoBehaviourPun
 
         if (grabbableObj != null)
         {
-            Debug.Log("Grab");
             grabbableObj.GetComponent<PhotonView>().RPC(nameof(grabbableObj.Activate), RpcTarget.All, photonView.ViewID);
+            if (grabbableObj.CompareTag("Ground"))
+                playerController.isGrounded = true;
         }
     }
 
@@ -49,6 +53,11 @@ public class Grab : MonoBehaviourPun
         {
             currentGrabObj.GetComponent<PhotonView>().RPC(nameof(currentGrabObj.Deactivate), RpcTarget.All, photonView.ViewID);
         }
+    }
+
+    private void OnPlayerDeath(Entity player)
+    {
+        Deactivate();
     }
 
     private void OnTriggerEnter(Collider other)

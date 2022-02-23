@@ -77,10 +77,10 @@ public class Entity : MonoBehaviourPunCallbacks, IPunObservable
     [PunRPC]
     public void OnDamage(float damage)
     {
+        status.CurrentHP -= (int)damage;
+
         if (status.CurrentHP == 0)
             onDeath.Invoke(this);
-
-        status.CurrentHP -= (int)damage;
     }
 
     public void RestoreHP()

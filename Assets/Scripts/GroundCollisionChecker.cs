@@ -1,10 +1,10 @@
 using UnityEngine;
 
-public class LimbCollision : MonoBehaviour
+public class GroundCollisionChecker : MonoBehaviour
 {
     [SerializeField] private PlayerController playerController;
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
         playerController.isGrounded = true;
     }

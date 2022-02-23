@@ -1,5 +1,6 @@
 public enum EGameMode
 {
     Basic,
-    DeathMatch
+    DeathMatch,
+    Sandbox
 }

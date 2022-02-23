@@ -99,9 +99,9 @@ namespace OnionBagel.PcGame.Miracle
             onSendChatMsg.Invoke(ifSendMsg.text);
 
             ifSendMsg.text = "";
-            //ifSendMsg.interactable = false;
-            //ifSendMsg.interactable = true;
-            ifSendMsg.ActivateInputField();
+            ifSendMsg.interactable = false;
+            ifSendMsg.interactable = true;
+            //ifSendMsg.ActivateInputField();
             //ifSendMsg.Select();
         }
 

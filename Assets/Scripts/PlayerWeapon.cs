@@ -12,6 +12,7 @@ public class PlayerWeapon : MonoBehaviourPun
     private void Awake()
     {
         grab = GetComponent<Grab>();
+        GetComponentInParent<Entity>().onDeath.AddListener(OnPlayerDeath);
     }
 
     public void PickupWeapon(Weapon weapon)
@@ -53,5 +54,10 @@ public class PlayerWeapon : MonoBehaviourPun
     public bool HaveWeapon()
     {
         return currentWeapon;
+    }
+
+    private void OnPlayerDeath(Entity player)
+    {
+        DropWeapon();
     }
 }
