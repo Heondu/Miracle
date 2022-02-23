@@ -8609,7 +8609,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1084252853}
   m_Direction: 2
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.99918354
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -17144,6 +17144,8 @@ MonoBehaviour:
   m_Value: 0
   m_Options:
     m_Options:
+    - m_Text: Random
+      m_Image: {fileID: 0}
     - m_Text: Room for 1
       m_Image: {fileID: 0}
     - m_Text: Room for 2
@@ -19839,6 +19841,8 @@ MonoBehaviour:
   m_Value: 0
   m_Options:
     m_Options:
+    - m_Text: Random
+      m_Image: {fileID: 0}
     - m_Text: Room for 1
       m_Image: {fileID: 0}
     - m_Text: Room for 2

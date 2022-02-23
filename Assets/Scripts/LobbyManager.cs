@@ -344,8 +344,10 @@ namespace OnionBagel.PcGame.Miracle
             if (!PhotonNetwork.IsMasterClient)//오류 나면 생각
                 return;
             Debug.Log(cp["room"].ToString());
+
             PhotonNetwork.LoadLevel(cp["room"].ToString());
-            Debug.Log("sk");
+
+            Debug.Log("Finish MakeRoom");
         }
 
         #endregion
