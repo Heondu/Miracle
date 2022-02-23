@@ -29,6 +29,8 @@ namespace OnionBagel.PcGame.Miracle
         [SerializeField]
         private Button cRButton;
         [SerializeField]
+        private Button rDButton;
+        [SerializeField]
         private GameObject passwordPanel;
 
         #endregion
@@ -75,11 +77,12 @@ namespace OnionBagel.PcGame.Miracle
             createRoomPanel.SetActive(false);
 
             cRButton.interactable = false;
-        }
+            rDButton.interactable = false;
+    }
 
-        #endregion
+    #endregion
 
-        #region Public Methods
+    #region Public Methods
 
         public void IsNameInput()
         {
@@ -240,6 +243,8 @@ namespace OnionBagel.PcGame.Miracle
             {
                 if (roomInfo.PlayerCount <= 0)
                 {
+                    if(GameObject.FindGameObjectsWithTag("ROOM").Length <= 1)
+                        rDButton.interactable = false;
                     foreach (GameObject obj in GameObject.FindGameObjectsWithTag("ROOM"))
                     {
                         if (roomInfo.Name == obj.GetComponent<Room>().roomName)
@@ -251,6 +256,8 @@ namespace OnionBagel.PcGame.Miracle
                 }
                 else
                 {
+                    rDButton.interactable = true;
+
                     foreach (GameObject obj in GameObject.FindGameObjectsWithTag("ROOM"))
                     {
                         if (roomInfo.Name == obj.GetComponent<Room>().roomName)

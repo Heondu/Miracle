@@ -781,11 +781,11 @@ MonoBehaviour:
   m_Value: 0
   m_Options:
     m_Options:
-    - m_Text: Basic
+    - m_Text: Sandbox
+      m_Image: {fileID: 0}
+    - m_Text: BattleRoyale
       m_Image: {fileID: 0}
     - m_Text: DeathMatch
-      m_Image: {fileID: 0}
-    - m_Text: Sandbox
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
@@ -15250,13 +15250,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxPlayersPerRoom: 4
-  controlPanel: {fileID: 0}
   progressLabel: {fileID: 2027087565}
   onJoinPanel: {fileID: 1001821324}
   createRoomPanel: {fileID: 358312947}
   cRInput: {fileID: 1597802564}
   cRButton: {fileID: 82523245}
-  crFaileddPanel: {fileID: 0}
+  rDButton: {fileID: 759702937}
   passwordPanel: {fileID: 312492008}
   txtRoomName: {fileID: 1597802564}
   txtPswd: {fileID: 723453679}
