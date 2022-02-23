@@ -5,6 +5,8 @@ using TMPro;
 public class Room : MonoBehaviour
 {
     public string roomName = "";
+    public string roomMode = "";
+    public string roomMap = "";
     public int playerCount = 0;
     public int maxPlayer = 0;
 
@@ -17,7 +19,7 @@ public class Room : MonoBehaviour
     {
         string[] roomData = roomName.Split('*');
         textRoomName.text = roomData[0];
-        textPlayer.text = $"{playerCount}/{maxPlayer}";
+        textPlayer.text = $"{roomMode}/{roomMap}\n{playerCount}/{maxPlayer}";
         if (roomData.Length > 1)
         {
             imageLock.gameObject.SetActive(true);

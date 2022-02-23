@@ -17,9 +17,6 @@ namespace OnionBagel.PcGame.Miracle
         [Tooltip("The maximum number of players per room. When a room is full, it can't be joined by new players, and so new room will be created")]
         [SerializeField]
         private byte maxPlayersPerRoom = 8;
-        [Tooltip("The Ui Panel to let the user enter name, connect and play")]
-        [SerializeField]
-        private GameObject controlPanel;
         [Tooltip("The UI Label to inform the user that the connection is in progress")]
         [SerializeField]
         private GameObject progressLabel;
@@ -31,8 +28,6 @@ namespace OnionBagel.PcGame.Miracle
         private TMP_InputField cRInput;
         [SerializeField]
         private Button cRButton;
-        [SerializeField]
-        private GameObject crFaileddPanel;
         [SerializeField]
         private GameObject passwordPanel;
 
@@ -77,9 +72,7 @@ namespace OnionBagel.PcGame.Miracle
 
             progressLabel.SetActive(false);
             passwordPanel.SetActive(false);
-            crFaileddPanel.SetActive(false);
             createRoomPanel.SetActive(false);
-            controlPanel.SetActive(true);
 
             cRButton.interactable = false;
         }
@@ -100,33 +93,41 @@ namespace OnionBagel.PcGame.Miracle
         {
             progressLabel.SetActive(false);
             passwordPanel.SetActive(false);
-            crFaileddPanel.SetActive(false);
             createRoomPanel.SetActive(true);
-            controlPanel.SetActive(true);
         }
 
         public void OnCreateClick()
         {
             string roomName = txtRoomName.text;
+            string room;
 
             RoomOptions ros = new RoomOptions();
 
             ros.MaxPlayers = (byte)(Mathf.Pow(2, dropdown.value + 1));
             ros.IsVisible = true;
 
-            int passwordFlag = 0;
+            string passwordFlag = "0";
             if (txtPswd.text != "")
             {
                 roomName += "*" + txtPswd.text;
-                passwordFlag = 1;
+                passwordFlag = "1";
             }
+
+            if (mapDropdown.options[mapDropdown.value].text == "Random")
+            {
+                int i = Random.Range(1, mapDropdown.options.Count);
+                room = mapDropdown.options[i].text;
+            }
+            else
+                room = mapDropdown.options[mapDropdown.value].text;
 
             ros.CustomRoomProperties = new Hashtable()
                 {
                     { "pwd", passwordFlag },
                     { "gameMode", gameModeDropdown.options[gameModeDropdown.value].text },
-                    { "room", mapDropdown.options[mapDropdown.value].text }
+                    { "room", room }
                 };
+            ros.CustomRoomPropertiesForLobby = new string[] { "pwd", "gameMode", "room" };
 
             foreach (GameObject obj in GameObject.FindGameObjectsWithTag("ROOM"))
             {
@@ -134,9 +135,7 @@ namespace OnionBagel.PcGame.Miracle
                 {
                     progressLabel.SetActive(false);
                     passwordPanel.SetActive(false);
-                    crFaileddPanel.SetActive(true);
                     createRoomPanel.SetActive(true);
-                    controlPanel.SetActive(true);
                     
                     return;
                 }
@@ -151,18 +150,14 @@ namespace OnionBagel.PcGame.Miracle
         {
             progressLabel.SetActive(false);
             passwordPanel.SetActive(false);
-            crFaileddPanel.SetActive(false);
             createRoomPanel.SetActive(true);
-            controlPanel.SetActive(true);
         }
 
         public void OnCancelClick()
         {
             progressLabel.SetActive(false);
             passwordPanel.SetActive(false);
-            crFaileddPanel.SetActive(false);
             createRoomPanel.SetActive(false);
-            controlPanel.SetActive(true);
         }
 
         public void OnPswdClick()
@@ -172,9 +167,7 @@ namespace OnionBagel.PcGame.Miracle
             {
                 progressLabel.SetActive(false);
                 passwordPanel.SetActive(false);
-                crFaileddPanel.SetActive(false);
                 createRoomPanel.SetActive(false);
-                controlPanel.SetActive(true);
             }
             else
                 PhotonNetwork.JoinRoom(pwdRoom, null);
@@ -265,7 +258,14 @@ namespace OnionBagel.PcGame.Miracle
                     }
                     GameObject _room = Instantiate(room, gridTr);
                     Room roomData = _room.GetComponent<Room>();
+
+                    Hashtable cp = roomInfo.CustomProperties;
+
+                    Debug.Log(cp["gameMode"].ToString());
+
                     roomData.roomName = roomInfo.Name;
+                    roomData.roomMode = cp["gameMode"].ToString();
+                    roomData.roomMap = cp["room"].ToString();
                     roomData.maxPlayer = roomInfo.MaxPlayers;
                     roomData.playerCount = roomInfo.PlayerCount;
                     roomData.UpdateInfo();
@@ -301,6 +301,8 @@ namespace OnionBagel.PcGame.Miracle
 
         public override void OnJoinRandomFailed(short returnCode, string message)
         {
+            Debug.Log("JoinFailed");
+            /*
             bool name = true;
             string roomName = "Room of truth";
             int i = 0;
@@ -310,7 +312,7 @@ namespace OnionBagel.PcGame.Miracle
 
             ros.MaxPlayers = maxPlayersPerRoom;
             ros.IsVisible = true;
-            ros.CustomRoomProperties = new Hashtable() { { "pwd", "0" }, { "room", mapDropdown.options[Random.Range(0, mapDropdown.options.Count)].text } };
+            ros.CustomRoomProperties = new Hashtable() { { "pwd", "0" }, { "room", mapDropdown.options[Random.Range(1, mapDropdown.options.Count)].text } };
 
             while (name)
             {
@@ -331,6 +333,7 @@ namespace OnionBagel.PcGame.Miracle
             }
 
             PhotonNetwork.CreateRoom(roomName, ros);//동일한 이름이 생성이 안되면 다시 시도.
+            */
         }
 
         public override void OnJoinedRoom()
