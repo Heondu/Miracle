@@ -71,6 +71,9 @@ public class SoundManager : MonoBehaviour
 
     public static void PlayBGM(AudioClip clip)
     {
+        if (Instance.soundBarBGM.clip == clip)
+            return;
+
         Instance.soundBarBGM.clip = clip;
         Instance.soundBarBGM.Play();
     }

@@ -289,6 +289,11 @@ namespace OnionBagel.PcGame.Miracle
             Debug.Log("LeftLobby");
         }
 
+        public void LeftLobby()
+        {
+            PhotonNetwork.Disconnect();
+        }
+
         public override void OnJoinRandomFailed(short returnCode, string message)
         {
             bool name = true;
