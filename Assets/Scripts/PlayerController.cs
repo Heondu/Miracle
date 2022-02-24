@@ -4,8 +4,10 @@ using Photon.Pun;
 public class PlayerController : MonoBehaviourPunCallbacks, IPunObservable
 {
     [SerializeField] private float speed;
+    [SerializeField] private float sprintMultiplier;
     [SerializeField] private float jumpForce;
     [SerializeField] private float rotationSpeed;
+    [SerializeField] private bool flipRotation = false;
 
     [SerializeField] private Transform root;
     [SerializeField] private Rigidbody pelvis;
@@ -61,7 +63,7 @@ public class PlayerController : MonoBehaviourPunCallbacks, IPunObservable
     private void UpdateRotate()
     {
         if (playerInput.Move != Vector3.zero)
-            Rotate(playerInput.Move);
+            Rotate(flipRotation ? playerInput.Move * -1 : playerInput.Move);
     }
 
     private void Rotate(Vector3 direction)
@@ -77,6 +79,7 @@ public class PlayerController : MonoBehaviourPunCallbacks, IPunObservable
 
     private void Move(Vector3 direction)
     {
+        float speed = playerInput.Sprint ? this.speed  * sprintMultiplier : this.speed;
         pelvis.AddForce(pelvis.position + direction * speed);
     }
 
@@ -97,11 +100,12 @@ public class PlayerController : MonoBehaviourPunCallbacks, IPunObservable
         if (!UIManager.IsUIControl)
         {
             animator.SetFloat("movement", playerInput.Move.magnitude);
+            animator.SetFloat("sprint", playerInput.Sprint ? 1 : 0);
 
             animator.SetBool("isLeftHandUp", playerInput.GrabL);
             animator.SetBool("isRightHandUp", playerInput.GrabR);
 
-            animator.SetBool("isHandsUp", playerInput.HandsUp);
+            //animator.SetBool("isHandsUp", playerInput.Sprint);
         }
         else
         {

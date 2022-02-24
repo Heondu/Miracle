@@ -4,10 +4,10 @@ using Photon.Pun;
 public class PlayerWeapon : MonoBehaviourPun
 {
     public float scaleFactor;
-    public int id;
     private Weapon currentWeapon;
     public Weapon Weapon => currentWeapon;
     private Grab grab;
+    public Transform socket;
 
     private void Awake()
     {

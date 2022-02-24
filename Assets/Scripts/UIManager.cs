@@ -60,6 +60,9 @@ public class UIManager : MonoBehaviour
 
     public void UpdateScoreText()
     {
+        if (!PhotonNetwork.IsConnected)
+            return;
+
         SortScore();
         CreateAndRemoveScoreUI();
         SetupScoreUI();

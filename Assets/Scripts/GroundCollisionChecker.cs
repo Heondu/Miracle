@@ -2,7 +2,12 @@ using UnityEngine;
 
 public class GroundCollisionChecker : MonoBehaviour
 {
-    [SerializeField] private PlayerController playerController;
+    private PlayerController playerController;
+
+    private void Awake()
+    {
+        playerController = GetComponentInParent<PlayerController>();
+    }
 
     private void OnTriggerEnter(Collider other)
     {

@@ -255,7 +255,7 @@ Transform:
   - {fileID: 1921604199}
   - {fileID: 127210003}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &127209998
 GameObject:
@@ -272,8 +272,8 @@ GameObject:
   - component: {fileID: 127209999}
   - component: {fileID: 127210004}
   - component: {fileID: 127210005}
-  - component: {fileID: 127210007}
   - component: {fileID: 127210006}
+  - component: {fileID: 127210007}
   m_Layer: 0
   m_Name: Cylinder (3)
   m_TagString: Ground
@@ -1118,7 +1118,7 @@ MonoBehaviour:
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents: []
-  sceneViewId: 13
+  sceneViewId: 9
   InstantiationId: 0
   isRuntimeInstantiated: 0
 --- !u!1 &191911782
@@ -1185,7 +1185,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &214654623
 GameObject:
@@ -1427,7 +1427,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9198328007250904401, guid: 11f867ca62206a94b91ec8d34ade8b5f, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 9198328007250904401, guid: 11f867ca62206a94b91ec8d34ade8b5f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1529,11 +1529,10 @@ GameObject:
   - component: {fileID: 437751812}
   - component: {fileID: 437751811}
   - component: {fileID: 437751816}
-  - component: {fileID: 437751818}
   - component: {fileID: 437751817}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Ground
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1856,18 +1855,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 437751810}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26f1f62c9962a004fb28778b0c93509a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &437751818
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 437751810}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
@@ -1878,7 +1865,7 @@ MonoBehaviour:
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents: []
-  sceneViewId: 12
+  sceneViewId: 13
   InstantiationId: 0
   isRuntimeInstantiated: 0
 --- !u!1 &441270096
@@ -1895,8 +1882,8 @@ GameObject:
   - component: {fileID: 441270098}
   - component: {fileID: 441270097}
   - component: {fileID: 441270102}
-  - component: {fileID: 441270104}
   - component: {fileID: 441270103}
+  - component: {fileID: 441270104}
   m_Layer: 0
   m_Name: Stairs
   m_TagString: Ground
@@ -3085,7 +3072,7 @@ MonoBehaviour:
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents: []
-  sceneViewId: 11
+  sceneViewId: 12
   InstantiationId: 0
   isRuntimeInstantiated: 0
 --- !u!1 &583274105
@@ -3103,8 +3090,8 @@ GameObject:
   - component: {fileID: 583274106}
   - component: {fileID: 583274111}
   - component: {fileID: 583274112}
-  - component: {fileID: 583274114}
   - component: {fileID: 583274113}
+  - component: {fileID: 583274114}
   m_Layer: 0
   m_Name: Cylinder
   m_TagString: Ground
@@ -3949,7 +3936,7 @@ MonoBehaviour:
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents: []
-  sceneViewId: 8
+  sceneViewId: 11
   InstantiationId: 0
   isRuntimeInstantiated: 0
 --- !u!1 &653260035
@@ -4006,7 +3993,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh67514
+  m_Name: pb_Mesh334722
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -4170,7 +4157,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh67678
+  m_Name: pb_Mesh334872
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -4436,8 +4423,8 @@ GameObject:
   - component: {fileID: 972370605}
   - component: {fileID: 972370604}
   - component: {fileID: 972370609}
-  - component: {fileID: 972370611}
   - component: {fileID: 972370610}
+  - component: {fileID: 972370611}
   m_Layer: 0
   m_Name: Cube (1)
   m_TagString: Ground
@@ -4785,7 +4772,7 @@ MonoBehaviour:
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents: []
-  sceneViewId: 7
+  sceneViewId: 8
   InstantiationId: 0
   isRuntimeInstantiated: 0
 --- !u!1 &981259822
@@ -4802,8 +4789,8 @@ GameObject:
   - component: {fileID: 981259824}
   - component: {fileID: 981259823}
   - component: {fileID: 981259828}
-  - component: {fileID: 981259830}
   - component: {fileID: 981259829}
+  - component: {fileID: 981259830}
   m_Layer: 0
   m_Name: Stairs (1)
   m_TagString: Ground
@@ -5992,7 +5979,7 @@ MonoBehaviour:
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents: []
-  sceneViewId: 6
+  sceneViewId: 7
   InstantiationId: 0
   isRuntimeInstantiated: 0
 --- !u!43 &1069346729
@@ -6001,7 +5988,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh67608
+  m_Name: pb_Mesh334806
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -6165,7 +6152,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh67470
+  m_Name: pb_Mesh334670
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -6329,7 +6316,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh67550
+  m_Name: pb_Mesh334752
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -6493,7 +6480,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh67634
+  m_Name: pb_Mesh334830
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -6666,8 +6653,8 @@ GameObject:
   - component: {fileID: 1343555837}
   - component: {fileID: 1343555842}
   - component: {fileID: 1343555843}
-  - component: {fileID: 1343555845}
   - component: {fileID: 1343555844}
+  - component: {fileID: 1343555845}
   m_Layer: 0
   m_Name: Cylinder (1)
   m_TagString: Ground
@@ -7512,7 +7499,7 @@ MonoBehaviour:
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents: []
-  sceneViewId: 10
+  sceneViewId: 6
   InstantiationId: 0
   isRuntimeInstantiated: 0
 --- !u!43 &1485292256
@@ -7521,7 +7508,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh67532
+  m_Name: pb_Mesh334736
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -7897,7 +7884,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh67590
+  m_Name: pb_Mesh334790
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -8070,8 +8057,8 @@ GameObject:
   - component: {fileID: 1921604195}
   - component: {fileID: 1921604200}
   - component: {fileID: 1921604201}
-  - component: {fileID: 1921604203}
   - component: {fileID: 1921604202}
+  - component: {fileID: 1921604203}
   m_Layer: 0
   m_Name: Cylinder (2)
   m_TagString: Ground
@@ -8916,7 +8903,7 @@ MonoBehaviour:
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents: []
-  sceneViewId: 9
+  sceneViewId: 10
   InstantiationId: 0
   isRuntimeInstantiated: 0
 --- !u!1 &2083496326
@@ -12187,11 +12174,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3768555893708060324, guid: 102439ff94fb5d045b1c74444d8d5307, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 3768555893708060324, guid: 102439ff94fb5d045b1c74444d8d5307, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5
+      value: -6.73
       objectReference: {fileID: 0}
     - target: {fileID: 3768555893708060324, guid: 102439ff94fb5d045b1c74444d8d5307, type: 3}
       propertyPath: m_LocalPosition.y
@@ -12754,7 +12741,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4536205196188224527, guid: 4933ba08402e4b14a9470ce8c3748e0f, type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 4536205196188224527, guid: 4933ba08402e4b14a9470ce8c3748e0f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -13533,6 +13520,10 @@ PrefabInstance:
       propertyPath: playerCount
       value: 
       objectReference: {fileID: 1614930811688195384}
+    - target: {fileID: 2949928159394583867, guid: d59d1a87d0f35a6498754445c7b4f9ea, type: 3}
+      propertyPath: playerPrefab
+      value: 
+      objectReference: {fileID: 7470813709479505972, guid: 7e9750e46a30f724594c18ab50f2d1f6, type: 3}
     - target: {fileID: 4763243088296394924, guid: d59d1a87d0f35a6498754445c7b4f9ea, type: 3}
       propertyPath: sceneViewId
       value: 1
@@ -15787,7 +15778,7 @@ RectTransform:
   - {fileID: 5631017793797586894}
   - {fileID: 7735802099297407830}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}

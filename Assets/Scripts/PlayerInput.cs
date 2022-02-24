@@ -8,7 +8,9 @@ public class PlayerInput : MonoBehaviourPun
     public bool Jump { get; private set; }
     public bool GrabL { get; private set; }
     public bool GrabR { get; private set; }
-    public bool HandsUp { get; private set; }
+    public bool Sprint { get; private set; }
+    public bool DropL { get; private set; }
+    public bool DropR { get; private set; }
 
     private void Update()
     {
@@ -17,7 +19,8 @@ public class PlayerInput : MonoBehaviourPun
             UpdateAxis();
             UpdateJump();
             UpdateGrab();
-            UpdateHandsUp();
+            UpdateSprint();
+            UpdateDrop();
         }
     }
 
@@ -39,8 +42,14 @@ public class PlayerInput : MonoBehaviourPun
         GrabR = Input.GetMouseButton(1);
     }
 
-    private void UpdateHandsUp()
+    private void UpdateSprint()
     {
-        HandsUp = Input.GetKey(KeyCode.LeftShift);
+        Sprint = Input.GetKey(KeyCode.LeftShift);
+    }
+
+    private void UpdateDrop()
+    {
+        DropL = Input.GetKey(KeyCode.F) && Input.GetMouseButtonDown(0);
+        DropR = Input.GetKey(KeyCode.F) && Input.GetMouseButtonDown(1);
     }
 }

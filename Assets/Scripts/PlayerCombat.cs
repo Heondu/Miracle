@@ -8,10 +8,12 @@ public class PlayerCombat : MonoBehaviour
     [SerializeField] private AttackCollision attackCollisionR;
 
     private Entity entity;
+    private PlayerInput playerInput;
 
     private void Awake()
     {
         entity = GetComponent<Entity>();
+        playerInput = GetComponent<PlayerInput>();
     }
 
     private void Update()
@@ -19,13 +21,10 @@ public class PlayerCombat : MonoBehaviour
         if (UIManager.IsUIControl)
             return;
 
-        if (Input.GetKey(KeyCode.F))
-        {
-            if (Input.GetMouseButtonDown(0))
-                playerWeaponL.DropWeapon();
-            else if (Input.GetMouseButtonDown(1))
-                playerWeaponR.DropWeapon();
-        }
+        if (playerInput.DropL)
+            playerWeaponL.DropWeapon();
+        if (playerInput.DropR)
+            playerWeaponR.DropWeapon();
     }
 
     public void ActivateLeftAttackCollision()
@@ -70,7 +69,7 @@ public class PlayerCombat : MonoBehaviour
     {
         if (id == 0)
             return playerWeaponL;
-        else if (id == 1)
+        if (id == 1)
             return playerWeaponR;
 
         return null;

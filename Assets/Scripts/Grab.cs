@@ -4,14 +4,15 @@ using Photon.Pun;
 public class Grab : MonoBehaviourPun
 {
     [SerializeField] private string[] ignoreTag;
-    [SerializeField] private PlayerWeapon playerWeapon;
 
-    public bool isGrabbing = false;
-    public bool haveWeapon = false;
-    public new Rigidbody rigidbody;
+    [HideInInspector] public new Rigidbody rigidbody;
+    [HideInInspector] public bool isGrabbing = false;
+    [HideInInspector] public bool haveWeapon = false;
+    [HideInInspector] public GrabbableObject currentGrabObj;
+    [HideInInspector] public FixedJoint fixedJoint;
+
+    private PlayerWeapon playerWeapon;
     private GrabbableObject grabbableObj;
-    public GrabbableObject currentGrabObj;
-    public FixedJoint fixedJoint;
     private GameObject weaponObj;
     private PlayerController playerController;
 
@@ -20,6 +21,7 @@ public class Grab : MonoBehaviourPun
         rigidbody = GetComponent<Rigidbody>();
         GetComponentInParent<Entity>().onDeath.AddListener(OnPlayerDeath);
         playerController = GetComponentInParent<PlayerController>();
+        playerWeapon = GetComponent<PlayerWeapon>();
     }
 
     public void Activate()
@@ -33,8 +35,8 @@ public class Grab : MonoBehaviourPun
         if (grabbableObj != null)
         {
             grabbableObj.GetComponent<PhotonView>().RPC(nameof(grabbableObj.Activate), RpcTarget.All, photonView.ViewID);
-            if (grabbableObj.CompareTag("Ground"))
-                playerController.isGrounded = true;
+            //if (grabbableObj.CompareTag("Ground"))
+            //    playerController.isGrounded = true;
         }
     }
 

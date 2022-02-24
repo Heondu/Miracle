@@ -2012,7 +2012,7 @@ GameObject:
   - component: {fileID: 2716388001622636963}
   - component: {fileID: 8484084316455918619}
   m_Layer: 0
-  m_Name: Player
+  m_Name: Player_Old
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2047,8 +2047,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 100
+  sprintMultiplier: 0
   jumpForce: 5000
   rotationSpeed: 5
+  flipRotation: 0
   root: {fileID: 4103420678003659044}
   pelvis: {fileID: 4103420678821307569}
   animator: {fileID: 5276432754946400759}
@@ -2107,7 +2109,6 @@ MonoBehaviour:
   onDeath:
     m_PersistentCalls:
       m_Calls: []
-  isDie: 0
 --- !u!95 &5276432754946400759
 Animator:
   serializedVersion: 3
@@ -4508,10 +4509,9 @@ MonoBehaviour:
   ignoreTag:
   - AttackCollision
   - Weapon
-  playerWeapon: {fileID: 5937100370827749199}
+  rigidbody: {fileID: 0}
   isGrabbing: 0
   haveWeapon: 0
-  rigidbody: {fileID: 0}
   currentGrabObj: {fileID: 0}
   fixedJoint: {fileID: 0}
 --- !u!114 &5937100370827749199
@@ -4527,7 +4527,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scaleFactor: 2.5
-  id: 0
+  socket: {fileID: 0}
 --- !u!114 &6726675199574203719
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4812,10 +4812,9 @@ MonoBehaviour:
   ignoreTag:
   - AttackCollision
   - Weapon
-  playerWeapon: {fileID: 564342298585041364}
+  rigidbody: {fileID: 0}
   isGrabbing: 0
   haveWeapon: 0
-  rigidbody: {fileID: 0}
   currentGrabObj: {fileID: 0}
   fixedJoint: {fileID: 0}
 --- !u!114 &564342298585041364
@@ -4831,7 +4830,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scaleFactor: 2.5
-  id: 0
+  socket: {fileID: 0}
 --- !u!114 &4811359977135760740
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6395,7 +6394,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7704edce1f189f6439750af36425f4ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerController: {fileID: 4103420677651781007}
 --- !u!1001 &1570971487043081279
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -12,10 +12,10 @@ public class Entity : MonoBehaviourPunCallbacks, IPunObservable
     public Transform Root => root;
     [SerializeField] private float dieY;
 
-    public UnityEvent<Entity> onDeath = new UnityEvent<Entity>();
+    [HideInInspector] public UnityEvent<Entity> onDeath = new UnityEvent<Entity>();
+    private bool isDie = false;
 
     public static GameObject LocalPlayerInstance;
-    public bool isDie = false;
 
     #region IPunObservable implementation
 
