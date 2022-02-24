@@ -12522,6 +12522,10 @@ PrefabInstance:
       propertyPath: playerCount
       value: 
       objectReference: {fileID: 1614930811688195384}
+    - target: {fileID: 2949928159394583867, guid: d59d1a87d0f35a6498754445c7b4f9ea, type: 3}
+      propertyPath: playerPrefab
+      value: 
+      objectReference: {fileID: 7470813709479505972, guid: 7e9750e46a30f724594c18ab50f2d1f6, type: 3}
     - target: {fileID: 4763243088296394924, guid: d59d1a87d0f35a6498754445c7b4f9ea, type: 3}
       propertyPath: sceneViewId
       value: 8

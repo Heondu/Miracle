@@ -15,9 +15,9 @@ GameObject:
   - component: {fileID: 7740773710896418017}
   - component: {fileID: 7740773710896418018}
   - component: {fileID: 7740773710896418019}
-  - component: {fileID: 62143217085934562}
-  - component: {fileID: 62143217085934563}
   - component: {fileID: 7026860654152975575}
+  - component: {fileID: 8770733972124006477}
+  - component: {fileID: 4656197650985203937}
   m_Layer: 6
   m_Name: Hand_L
   m_TagString: Untagged
@@ -220,7 +220,19 @@ MonoBehaviour:
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
   m_UseLocal: 1
---- !u!114 &62143217085934562
+--- !u!114 &7026860654152975575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 62143217085934588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7704edce1f189f6439750af36425f4ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8770733972124006477
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -240,7 +252,7 @@ MonoBehaviour:
   haveWeapon: 0
   currentGrabObj: {fileID: 0}
   fixedJoint: {fileID: 0}
---- !u!114 &62143217085934563
+--- !u!114 &4656197650985203937
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -254,18 +266,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scaleFactor: 1
   socket: {fileID: 3266396191036509059}
---- !u!114 &7026860654152975575
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 62143217085934588}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7704edce1f189f6439750af36425f4ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &637948819996886560
 GameObject:
   m_ObjectHideFlags: 0
@@ -4643,7 +4643,7 @@ GameObject:
   - component: {fileID: 7470813709479505978}
   - component: {fileID: 7470813709479505979}
   m_Layer: 0
-  m_Name: Player_New
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4685,7 +4685,7 @@ MonoBehaviour:
   root: {fileID: 2653507068599104326}
   pelvis: {fileID: 7740773710896417997}
   animator: {fileID: 7470813709479505979}
-  grabL: {fileID: 62143217085934562}
+  grabL: {fileID: 8770733972124006477}
   grabR: {fileID: 7759238796238895449}
   isGrounded: 0
 --- !u!114 &7470813709479505955
@@ -4752,7 +4752,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b11706a913770e4e8b2564a40cb6449, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerWeaponL: {fileID: 62143217085934563}
+  playerWeaponL: {fileID: 4656197650985203937}
   playerWeaponR: {fileID: 7759238796238895450}
   attackCollisionL: {fileID: 7740773710140458810}
   attackCollisionR: {fileID: 7740773709732941378}
