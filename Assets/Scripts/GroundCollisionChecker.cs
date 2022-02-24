@@ -11,7 +11,6 @@ public class GroundCollisionChecker : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log($"{gameObject.name} : {collision.gameObject.name}");
         playerController.isGrounded = true;
     }
 

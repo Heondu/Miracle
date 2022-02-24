@@ -33,9 +33,10 @@ public class GrabbableObject : MonoBehaviourPunCallbacks
         PhotonView playerPV = PhotonView.Find(playerID);
         if (playerPV != null)
         {
-            //GetComponent<PhotonTransformView>().enabled = false;
-            if (TryGetComponent(out PhotonInterpTransformView pisv))
-                pisv.enabled = false;
+            //if (TryGetComponent(out PhotonTransformView ptv))
+            //    ptv.enabled = false;
+            if (TryGetComponent(out PhotonInterpTransformView pitv))
+                pitv.enabled = false;
             if (playerPV.IsMine)
             {
                 //rb.isKinematic = false;
@@ -57,9 +58,10 @@ public class GrabbableObject : MonoBehaviourPunCallbacks
         PhotonView playerPV = PhotonView.Find(playerID);
         if (playerPV != null)
         {
-            //GetComponent<PhotonTransformView>().enabled = true;
-            if (TryGetComponent(out PhotonInterpTransformView pisv))
-                pisv.enabled = true;
+            //if (TryGetComponent(out PhotonTransformView ptv))
+            //    ptv.enabled = true;
+            if (TryGetComponent(out PhotonInterpTransformView pitv))
+                pitv.enabled = true;
             if (playerPV.IsMine)
             {
                 //rb.isKinematic = true;

@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using Photon.Pun;
 
@@ -27,17 +28,25 @@ public class PhotonInterpTransformView : MonoBehaviourPun, IPunObservable
     private void Update()
     {
         if (!photonView.IsMine)
+        {
             InterpTransform();
+        }
     }
 
     private void InterpPosition()
     {
-        transform.position = Vector3.Slerp(transform.position, nextPosition, Time.deltaTime * 2);
+        if (Mathf.Abs(Vector3.Magnitude(transform.position - nextPosition)) < 0.1f)
+            transform.position = nextPosition;
+
+        transform.position = Vector3.Lerp(transform.position, nextPosition, Time.deltaTime * 10);
     }
 
     private void InterpRotation()
     {
-        transform.rotation = Quaternion.Slerp(transform.rotation, nextRotation, Time.deltaTime * 2);
+        if (Mathf.Abs(Vector3.Magnitude(transform.eulerAngles - nextRotation.eulerAngles)) < 0.1f)
+            transform.rotation = nextRotation;
+
+        transform.rotation = Quaternion.Lerp(transform.rotation, nextRotation, Time.deltaTime * 10);
     }
 
     private void InterpTransform()

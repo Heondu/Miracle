@@ -65,7 +65,7 @@ public class Weapon : MonoBehaviourPunCallbacks
             transform.SetParent(owner.GetComponent<PlayerWeapon>().socket);
             transform.localPosition = Vector3.zero;
             transform.localRotation = Quaternion.Euler(Vector3.zero);
-            transform.localScale = Vector3.one * pv.GetComponent<PlayerWeapon>().scaleFactor;
+            //transform.localScale = Vector3.one * pv.GetComponent<PlayerWeapon>().scaleFactor;
         }
     }
 
