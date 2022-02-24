@@ -1,6 +1,6 @@
 public enum EGameMode
 {
-    Basic,
+    BattleRoyale,
     DeathMatch,
     Sandbox
 }

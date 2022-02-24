@@ -13500,6 +13500,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1014943856366092099, guid: d59d1a87d0f35a6498754445c7b4f9ea, type: 3}
+      propertyPath: Block1
+      value: 
+      objectReference: {fileID: 3768555893708060321, guid: 829fa486cd8260042a65613b7d360c77, type: 3}
+    - target: {fileID: 1014943856366092099, guid: d59d1a87d0f35a6498754445c7b4f9ea, type: 3}
+      propertyPath: Block2
+      value: 
+      objectReference: {fileID: 3768555893708060321, guid: 102439ff94fb5d045b1c74444d8d5307, type: 3}
+    - target: {fileID: 1014943856366092099, guid: d59d1a87d0f35a6498754445c7b4f9ea, type: 3}
+      propertyPath: Block3
+      value: 
+      objectReference: {fileID: 4536205196188224531, guid: 4933ba08402e4b14a9470ce8c3748e0f, type: 3}
     - target: {fileID: 2284165921483354066, guid: d59d1a87d0f35a6498754445c7b4f9ea, type: 3}
       propertyPath: m_Name
       value: Game Manager
@@ -14813,7 +14825,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 304913699193012167}
   m_HandleRect: {fileID: 9114006998053803627}
   m_Direction: 2
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
