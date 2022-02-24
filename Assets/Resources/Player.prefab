@@ -4679,7 +4679,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 100
   sprintMultiplier: 3
-  jumpForce: 5000
+  jumpForce: 7500
   rotationSpeed: 5
   flipRotation: 1
   root: {fileID: 2653507068599104326}
