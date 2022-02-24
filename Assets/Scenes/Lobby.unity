@@ -8536,7 +8536,7 @@ MonoBehaviour:
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 1
-  m_ChildControlHeight: 1
+  m_ChildControlHeight: 0
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
@@ -15975,7 +15975,7 @@ MonoBehaviour:
   dropdown: {fileID: 225360456}
   gameModeDropdown: {fileID: 55031217}
   mapDropdown: {fileID: 1890970661}
-  room: {fileID: 7647126425401924371, guid: ae4c8506ff1da7d4e9b5cc333e850139, type: 3}
+  room: {fileID: 4972099725791703708, guid: ae4c8506ff1da7d4e9b5cc333e850139, type: 3}
   gridTr: {fileID: 1042366694}
   pwdRoom: 
 --- !u!4 &2147131124

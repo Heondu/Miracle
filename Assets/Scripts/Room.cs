@@ -11,6 +11,7 @@ public class Room : MonoBehaviour
     public int maxPlayer = 0;
 
     public TextMeshProUGUI  textRoomName;
+    public TextMeshProUGUI  textGameModeAndRoom;
     public TextMeshProUGUI  textPlayer;
     public Image            imageLock;
     public Image            imageUnlock;
@@ -19,7 +20,8 @@ public class Room : MonoBehaviour
     {
         string[] roomData = roomName.Split('*');
         textRoomName.text = roomData[0];
-        textPlayer.text = $"{roomMode}/{roomMap}\n{playerCount}/{maxPlayer}";
+        textGameModeAndRoom.text = $"{roomMode}/{roomMap}";
+        textPlayer.text = $"{playerCount}/{maxPlayer}";
         if (roomData.Length > 1)
         {
             imageLock.gameObject.SetActive(true);

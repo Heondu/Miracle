@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b56d3c5f64a49fd49beae0b903c22169, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPrefab: {fileID: 4103420677651780993, guid: 83a47049a4517354e8f56c97df9489c6, type: 3}
+  playerPrefab: {fileID: 7470813709479505972, guid: 7e9750e46a30f724594c18ab50f2d1f6, type: 3}
   msgList: {fileID: 0}
   ifSendMsg: {fileID: 0}
   playerCount: {fileID: 0}
@@ -99,7 +99,7 @@ PrefabInstance:
       objectReference: {fileID: 1476403807410306989}
     - target: {fileID: 509845517957909230, guid: 92631b01f3bba514bbe6c2979980565f, type: 3}
       propertyPath: m_Name
-      value: GameMode_DeathMatch
+      value: GameMode_BattelRoyale
       objectReference: {fileID: 0}
     - target: {fileID: 509845517957909231, guid: 92631b01f3bba514bbe6c2979980565f, type: 3}
       propertyPath: m_RootOrder
@@ -216,7 +216,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3385216807390540057, guid: 0216b5a28808f534fa9659ec2691c0ba, type: 3}
       propertyPath: m_Name
-      value: GameMode_Basic
+      value: GameMode_DeathMatch
       objectReference: {fileID: 0}
     - target: {fileID: 4477121636418364455, guid: 0216b5a28808f534fa9659ec2691c0ba, type: 3}
       propertyPath: sceneViewId
@@ -311,6 +311,18 @@ PrefabInstance:
       propertyPath: sceneViewId
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7808809941323969992, guid: 11a9805eaae77c444aa7239c130998b7, type: 3}
+      propertyPath: Block1
+      value: 
+      objectReference: {fileID: 3768555893708060321, guid: 829fa486cd8260042a65613b7d360c77, type: 3}
+    - target: {fileID: 7808809941323969992, guid: 11a9805eaae77c444aa7239c130998b7, type: 3}
+      propertyPath: Block2
+      value: 
+      objectReference: {fileID: 3768555893708060321, guid: 102439ff94fb5d045b1c74444d8d5307, type: 3}
+    - target: {fileID: 7808809941323969992, guid: 11a9805eaae77c444aa7239c130998b7, type: 3}
+      propertyPath: Block3
+      value: 
+      objectReference: {fileID: 4536205196188224531, guid: 4933ba08402e4b14a9470ce8c3748e0f, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 11a9805eaae77c444aa7239c130998b7, type: 3}
 --- !u!4 &7968284196274727674 stripped

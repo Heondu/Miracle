@@ -1,10 +1,14 @@
 using UnityEngine;
-using Photon.Pun;
 using UnityEngine.SceneManagement;
+using Photon.Pun;
+using Photon.Realtime;
 
 public class DeathMatchMode : GameMode, IPunObservable
 {
-    private bool isAlone = true;
+    [SerializeField] private float limitTime;
+    private float elapsedTime;
+
+    private int deathCount;
 
     #region IPunObservable implementation
 
@@ -12,9 +16,12 @@ public class DeathMatchMode : GameMode, IPunObservable
     {
         if (stream.IsWriting)
         {
+            stream.SendNext(limitTime - elapsedTime);
         }
         else
         {
+            float leftTime = (float)stream.ReceiveNext();
+            UIManager.Instance.UpdateTimeText(leftTime);
         }
     }
 
@@ -23,30 +30,60 @@ public class DeathMatchMode : GameMode, IPunObservable
     public override void Init(Entity player)
     {
         base.Init(player);
-
-        player.onDeath.AddListener(OnDeath);
+        PhotonNetwork.LocalPlayer.SetScore(0);
+        player.onDeath.AddListener(AddDeathCount);
+        //photonView.RPC(nameof(UpdateScoreUI), RpcTarget.All);
     }
 
-    private void OnDeath(Entity player)
+    private void AddDeathCount(Entity player)
     {
-        //player.gameObject.SetActive(false);
-        PhotonNetwork.LeaveRoom();
+        PhotonNetwork.LocalPlayer.AddScore(1);
+        player.Setup();
+        //photonView.RPC(nameof(UpdateScoreUI), RpcTarget.All);
     }
 
     public void Update()
     {
-        UIManager.Instance.UpdatePlayerCountText(PhotonNetwork.PlayerList.Length);
-
-        if (PhotonNetwork.PlayerList.Length > 1)
+        if (PhotonNetwork.IsMasterClient)
         {
-            isAlone = false;
+            elapsedTime += Time.deltaTime;
+            UIManager.Instance.UpdateTimeText(limitTime - elapsedTime);
         }
 
-        if (!isAlone && PhotonNetwork.PlayerList.Length == 1)
+        if (limitTime - elapsedTime <= 0)
         {
-            PlayerPrefs.SetString("Winner", PhotonNetwork.NickName);
-            PhotonNetwork.LeaveRoom();
-            SceneManager.LoadScene("Result DeathMatch");
+            photonView.RPC(nameof(LeaveRoom), RpcTarget.All);
         }
+
+        UpdateScoreUI();
+    }
+
+    [PunRPC]
+    private void UpdateScoreUI()
+    {
+        UIManager.Instance.UpdateScoreText();
+    }
+
+    [PunRPC]
+    private void LeaveRoom()
+    {
+        PlayerPrefs.SetString("Winner", GetWinner().NickName);
+        PhotonNetwork.LeaveRoom();
+        SceneManager.LoadScene("Result Basic");
+    }
+
+    private Player GetWinner()
+    {
+        Player player = null;
+        foreach (Player p in PhotonNetwork.PlayerList)
+        {
+            if (player == null)
+                player = p;
+
+            if (player.GetScore() < p.GetScore())
+                player = p;
+        }
+
+        return player;
     }
 }
