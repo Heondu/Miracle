@@ -357,7 +357,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Winner is aaa
+  m_text: The winner is aaa
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0099a03142e35f2469e2da6e074ab6b3, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 117455516bde0734e97a86beca44fe5b, type: 2}
@@ -998,8 +998,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 766317493}
         m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
-        m_MethodName: LoadScene
-        m_Mode: 5
+        m_MethodName: GoToLobby
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

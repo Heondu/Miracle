@@ -78,11 +78,11 @@ namespace OnionBagel.PcGame.Miracle
 
             cRButton.interactable = false;
             rDButton.interactable = false;
-    }
+        }
 
     #endregion
 
-    #region Public Methods
+        #region Public Methods
 
         public void IsNameInput()
         {

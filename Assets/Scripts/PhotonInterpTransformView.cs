@@ -4,8 +4,11 @@ using Photon.Pun;
 
 public class PhotonInterpTransformView : MonoBehaviourPun, IPunObservable
 {
-    private Vector3 nextPosition;
-    private Quaternion nextRotation;
+    private Vector3 oldPosition = Vector3.zero;
+    private Quaternion oldRotation = Quaternion.Euler(Vector3.zero);
+    private Vector3 nextPosition = Vector3.zero;
+    private Quaternion nextRotation = Quaternion.Euler(Vector3.zero);
+    private float deltaTime = 0;
 
     #region IPunObservable implementation
 
@@ -18,6 +21,9 @@ public class PhotonInterpTransformView : MonoBehaviourPun, IPunObservable
         }
         else
         {
+            deltaTime = 0;
+            oldPosition = transform.position;
+            oldRotation = transform.rotation;
             nextPosition = (Vector3)stream.ReceiveNext();
             nextRotation = (Quaternion)stream.ReceiveNext();
         }
@@ -27,31 +33,27 @@ public class PhotonInterpTransformView : MonoBehaviourPun, IPunObservable
 
     private void Update()
     {
-        if (!photonView.IsMine)
-        {
-            InterpTransform();
-        }
+        if (photonView.IsMine)
+            return;
+
+        if (deltaTime > 1)
+            return;
+
+        deltaTime += Time.deltaTime * 10;
+
+        if (oldPosition != nextPosition)
+            InterpPosition();
+        if (oldRotation != nextRotation)
+            InterpRotation();
     }
 
     private void InterpPosition()
     {
-        if (Mathf.Abs(Vector3.Magnitude(transform.position - nextPosition)) < 0.1f)
-            transform.position = nextPosition;
-
-        transform.position = Vector3.Lerp(transform.position, nextPosition, Time.deltaTime * 10);
+        transform.position = Vector3.Lerp(oldPosition, nextPosition, deltaTime);
     }
 
     private void InterpRotation()
     {
-        if (Mathf.Abs(Vector3.Magnitude(transform.eulerAngles - nextRotation.eulerAngles)) < 0.1f)
-            transform.rotation = nextRotation;
-
-        transform.rotation = Quaternion.Lerp(transform.rotation, nextRotation, Time.deltaTime * 10);
-    }
-
-    private void InterpTransform()
-    {
-        InterpPosition();
-        InterpRotation();
+        transform.rotation = Quaternion.Lerp(oldRotation, nextRotation, deltaTime);
     }
 }

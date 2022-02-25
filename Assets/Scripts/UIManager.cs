@@ -72,6 +72,9 @@ public class UIManager : MonoBehaviour
     {
         playerList.Clear();
 
+        if (PhotonNetwork.CurrentRoom == null)
+            return;
+
         Dictionary<int, Player> playerDict = PhotonNetwork.CurrentRoom.Players;
         foreach (int key in playerDict.Keys)
         {

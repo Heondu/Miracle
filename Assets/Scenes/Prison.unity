@@ -19052,6 +19052,10 @@ PrefabInstance:
       propertyPath: limitTime
       value: 300
       objectReference: {fileID: 0}
+    - target: {fileID: 1006220318021311641, guid: d59d1a87d0f35a6498754445c7b4f9ea, type: 3}
+      propertyPath: sceneViewId
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1014943856366092099, guid: d59d1a87d0f35a6498754445c7b4f9ea, type: 3}
       propertyPath: Block1
       value: 
@@ -19067,6 +19071,10 @@ PrefabInstance:
     - target: {fileID: 2284165921483354066, guid: d59d1a87d0f35a6498754445c7b4f9ea, type: 3}
       propertyPath: m_Name
       value: Game Manager
+      objectReference: {fileID: 0}
+    - target: {fileID: 2491877349351466863, guid: d59d1a87d0f35a6498754445c7b4f9ea, type: 3}
+      propertyPath: limitTime
+      value: 180
       objectReference: {fileID: 0}
     - target: {fileID: 2949928159394583867, guid: d59d1a87d0f35a6498754445c7b4f9ea, type: 3}
       propertyPath: vert
@@ -19151,6 +19159,10 @@ PrefabInstance:
     - target: {fileID: 8569694705194665028, guid: d59d1a87d0f35a6498754445c7b4f9ea, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8874382855782109058, guid: d59d1a87d0f35a6498754445c7b4f9ea, type: 3}
+      propertyPath: sceneViewId
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d59d1a87d0f35a6498754445c7b4f9ea, type: 3}

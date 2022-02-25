@@ -69,7 +69,7 @@ public class DeathMatchMode : GameMode, IPunObservable
     {
         PlayerPrefs.SetString("Winner", GetWinner().NickName);
         PhotonNetwork.LeaveRoom();
-        SceneManager.LoadScene("Result Basic");
+        SceneManager.LoadScene("Result DeathMatch");
     }
 
     private Player GetWinner()

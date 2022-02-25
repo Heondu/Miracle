@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 509845517957909231}
-  - component: {fileID: 5869587968777425928}
   - component: {fileID: -6080935008286449479}
+  - component: {fileID: 1893904604964640241}
   m_Layer: 0
   m_Name: GameMode_BattleRoyale
   m_TagString: Untagged
@@ -32,19 +32,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5869587968777425928
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 509845517957909230}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 16c0bde73bdd4a8459337d8ba3b82f8f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameMode: 0
 --- !u!114 &-6080935008286449479
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -64,7 +51,20 @@ MonoBehaviour:
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents:
-  - {fileID: 5869587968777425928}
+  - {fileID: 1893904604964640241}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!114 &1893904604964640241
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 509845517957909230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58232eea4656fdf4792a0eaa7039eda9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameMode: 0

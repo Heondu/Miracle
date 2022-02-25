@@ -29,7 +29,6 @@ public class BattleRoyaleMode : GameMode, IPunObservable
 
     private void OnDeath(Entity player)
     {
-        //player.gameObject.SetActive(false);
         PhotonNetwork.LeaveRoom();
     }
 
@@ -46,7 +45,7 @@ public class BattleRoyaleMode : GameMode, IPunObservable
         {
             PlayerPrefs.SetString("Winner", PhotonNetwork.NickName);
             PhotonNetwork.LeaveRoom();
-            SceneManager.LoadScene("Result DeathMatch");
+            SceneManager.LoadScene("Result BattleRoyale");
         }
     }
 }

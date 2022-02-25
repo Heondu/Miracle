@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using Photon.Pun;
 
 public class ResultUI : MonoBehaviour
 {
@@ -7,6 +8,6 @@ public class ResultUI : MonoBehaviour
 
     private void Start()
     {
-        winnerText.text = $"Winner is {PlayerPrefs.GetString("Winner")}!";
+        winnerText.text = $"The winner is {PlayerPrefs.GetString("Winner")}!";
     }
 }
