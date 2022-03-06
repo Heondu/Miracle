@@ -12,8 +12,7 @@ GameObject:
   - component: {fileID: 2619505348650393090}
   - component: {fileID: 269843748053723848}
   - component: {fileID: 2480706912045865666}
-  - component: {fileID: 6432028527249614038}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Banana
   m_TagString: Weapon
   m_Icon: {fileID: 0}
@@ -30,8 +29,7 @@ Transform:
   m_LocalRotation: {x: -0.70710695, y: -0, z: -0.7071067, w: 0}
   m_LocalPosition: {x: -1.07, y: 1.14, z: -0.02}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 3324589328547000638}
+  m_Children: []
   m_Father: {fileID: 4610044179734360484}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -180, y: -90, z: 0}
@@ -98,21 +96,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: -1
   m_Mesh: {fileID: -5495902117074765545, guid: a262624470f647c4abf7460e1b65da80, type: 3}
---- !u!136 &6432028527249614038
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1782951587576384285}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  m_Radius: 1
-  m_Height: 4
-  m_Direction: 1
-  m_Center: {x: 0.0010621995, y: 0.19736814, z: 0.68406415}
---- !u!1 &3024189762371559795
+--- !u!1 &2784782444741678763
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -120,51 +104,102 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3324589328547000638}
-  - component: {fileID: 8173072585876714463}
-  - component: {fileID: 4435915724584095631}
-  m_Layer: 0
-  m_Name: AttackCollider
-  m_TagString: AttackCollision
+  - component: {fileID: 6268152553932899028}
+  - component: {fileID: 3263056193051334749}
+  - component: {fileID: 407388785482928627}
+  - component: {fileID: 5526694201867538083}
+  - component: {fileID: 8300505882780400131}
+  m_Layer: 8
+  m_Name: AttackCollision
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3324589328547000638
+--- !u!4 &6268152553932899028
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3024189762371559795}
-  m_LocalRotation: {x: 0.06741109, y: -0, z: -0, w: 0.9977253}
-  m_LocalPosition: {x: 0, y: -0.008, z: 0.46}
+  m_GameObject: {fileID: 2784782444741678763}
+  m_LocalRotation: {x: -0.70710695, y: -0, z: -0.7071067, w: 0}
+  m_LocalPosition: {x: -1.07, y: 1.14, z: -0.02}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1438198219527279015}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 7.731, y: 0, z: 0}
---- !u!136 &8173072585876714463
-CapsuleCollider:
+  m_Father: {fileID: 4610044179734360484}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: -180, y: -90, z: 0}
+--- !u!33 &3263056193051334749
+MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3024189762371559795}
+  m_GameObject: {fileID: 2784782444741678763}
+  m_Mesh: {fileID: -5495902117074765545, guid: a262624470f647c4abf7460e1b65da80, type: 3}
+--- !u!23 &407388785482928627
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2784782444741678763}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 4481005128293969958, guid: a262624470f647c4abf7460e1b65da80, type: 3}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &5526694201867538083
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2784782444741678763}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2.2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4435915724584095631
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: -1
+  m_Mesh: {fileID: -5495902117074765545, guid: a262624470f647c4abf7460e1b65da80, type: 3}
+--- !u!114 &8300505882780400131
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3024189762371559795}
+  m_GameObject: {fileID: 2784782444741678763}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 47391719cf9b80e4f924de71933a12f5, type: 3}
@@ -185,6 +220,7 @@ GameObject:
   - component: {fileID: 4463872800183758123}
   - component: {fileID: 1685547030528782685}
   - component: {fileID: 5572248134953219838}
+  - component: {fileID: 1955561784819827308}
   m_Layer: 0
   m_Name: Banana
   m_TagString: Weapon
@@ -204,6 +240,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1438198219527279015}
+  - {fileID: 6268152553932899028}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -254,9 +291,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 628d0f782f7e73a4e941b0ac0dad98d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colliders:
-  - {fileID: 2480706912045865666}
-  attackCollision: {fileID: 4435915724584095631}
+  colliders: []
+  attackCollision: {fileID: 8300505882780400131}
 --- !u!114 &1685547030528782685
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -287,3 +323,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!136 &1955561784819827308
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8837023864349131208}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 1
+  m_Height: 4
+  m_Direction: 1
+  m_Center: {x: -0.49, y: 1.02, z: 0}

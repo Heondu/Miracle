@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 7026860654152975575}
   - component: {fileID: 8770733972124006477}
   - component: {fileID: 4656197650985203937}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: Hand_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1730,7 +1730,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3266396191036509059}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Hand_L_Socket
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2904,7 +2904,7 @@ GameObject:
   - component: {fileID: 7740773710896418020}
   - component: {fileID: 7740773710896418021}
   - component: {fileID: 5865791200810464982}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: LowerArm_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3126,7 +3126,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2931572503397705901}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Hand_R_Socket
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3607,7 +3607,7 @@ GameObject:
   - component: {fileID: 7740773710896417932}
   - component: {fileID: 7740773710896417933}
   - component: {fileID: 6635077391010914580}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: LowerArm_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6808,7 +6808,7 @@ GameObject:
   - component: {fileID: 7759238796238895449}
   - component: {fileID: 7759238796238895450}
   - component: {fileID: 584434380278378814}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: Hand_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}

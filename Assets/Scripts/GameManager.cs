@@ -34,7 +34,6 @@ namespace OnionBagel.PcGame.Miracle
 
         public override void OnLeftRoom()
         {
-            Debug.Log("A");
             SceneManager.LoadScene(1);
         }
 

@@ -108,7 +108,7 @@ GameObject:
   - component: {fileID: 8506549275181926822}
   - component: {fileID: 5759040931526496584}
   m_Layer: 0
-  m_Name: AttackCollider
+  m_Name: AttackCollision
   m_TagString: AttackCollision
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
